@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 
 // App component - represents the whole app
 class App extends Component {
-
+  state = {
+    employees: []
+  };
 
   render() {
     return (
@@ -11,7 +13,8 @@ class App extends Component {
         <header>
           <h1>Schedule Tracker</h1>
         </header>
-
+        <div className="App">{/* DashBoard
+      Schedule */}</div>
       </div>
     );
   }
