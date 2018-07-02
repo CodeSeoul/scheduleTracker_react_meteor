@@ -1,13 +1,12 @@
 import { Meteor } from 'meteor/meteor';
-import '../imports/api/employees';
-import { Employees } from '../imports/api/employees';
+import Employees from '/imports/api/employees';
 import _ from 'lodash';
 import { helpers, random, name } from 'faker';
 
 Meteor.startup(() => {
   // code to run on server at startup
   const employeesNumber = Employees.find({}).count();
-  console.log(employeesNumber < 1);
+  //console.log(employeesNumber < 1);
   //check if startup is run on server
   if (Meteor.isServer) {
     // check if data exists in collection
@@ -17,13 +16,13 @@ Meteor.startup(() => {
           let schedule = [];
           for (let i = 0; i < 50; i++) {
             let week = [
-              _.random(1, 4),
-              _.random(1, 4),
-              _.random(1, 4),
-              _.random(1, 4),
-              _.random(1, 4),
-              _.random(1, 4),
-              _.random(1, 4)
+              _.random(0, 4),
+              _.random(0, 4),
+              _.random(0, 4),
+              _.random(0, 4),
+              _.random(0, 4),
+              _.random(0, 4),
+              _.random(0, 4)
             ];
             schedule = [...schedule, week];
           }
@@ -34,15 +33,18 @@ Meteor.startup(() => {
           id: random.number(),
           firstName: name.firstName(),
           lastName: name.lastName(),
-          rank: _.random(1, 4),
-          section: _.random(1, 4),
+          rank: _.random(0, 3),
+          section: _.random(0, 3),
           schedule: scheduleArrays()
         });
       });
     }
   }
-  const finalCount = Employees.find({}).count();
-  console.log('finalCount', finalCount);
+  // const finalCount = Employees.find({}).count();
+  // console.log('finalCount', finalCount);
+  Meteor.publish('employees', function() {
+    return Employees.find({}, { limit: 100 });
+  });
 });
 /**
  schema shape
