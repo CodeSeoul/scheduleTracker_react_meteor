@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import Employees from '../api/employees';
 import ScheduleBoard from './components/schedule_board/ScheduleBoard'
+import DashBoard from './components/dashboard/Dashboard'
 
 // App component - represents the whole app
 class App extends Component {
@@ -44,6 +45,7 @@ class App extends Component {
         </header>
         <div className="App">{/* DashBoard
       Schedule */}
+          <DashBoard/>
           <ScheduleBoard/>
         </div>
       </div>
