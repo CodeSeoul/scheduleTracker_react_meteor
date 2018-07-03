@@ -16,6 +16,9 @@ const ScheduleBoard = (props)=>{
 
     const Tablehead = styled.div`
     `
+    console.log(props.database);
+
+    const members = props.database.employees.map(employee=>{return <Member key={employee.id} data={{...employee}}/>} );
 
     return(
 
@@ -31,6 +34,7 @@ const ScheduleBoard = (props)=>{
         <Tablehead>Fri</Tablehead>
         <Tablehead>Sat</Tablehead>
         <Tablehead>Sun</Tablehead>
+        {members}
 
     </ScheduleContainer>
 
