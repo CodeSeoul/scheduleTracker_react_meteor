@@ -18,7 +18,7 @@ const ScheduleBoard = (props)=>{
     `
     console.log(props.database);
 
-    const members = props.database.employees.map(employee=>{return <Member key={employee.id} data={{...employee}}/>} );
+    const members = props.database.employees.map(employee=>{return <Member key={employee.id} employee={{...employee}}/>} );
 
     return(
 
