@@ -1,12 +1,23 @@
 import React from 'react';
-import { join } from 'path';
+import styled from 'styled-components'
 
 const ScheduleBoard = (props)=>{
 
+    const ScheduleContainer = styled.div`
+    
+    display : grid;
+    grid-template-columns: repeat(10, 1fr);
+    justify-items : stretch;
+    align-items : center;
+    background-color : #eee;
+
+    `
+
     return(
 
-        <div>
-        </div>
+    <ScheduleContainer>
+        
+    </ScheduleContainer>
 
     )
 }
