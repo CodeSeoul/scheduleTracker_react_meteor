@@ -7,7 +7,7 @@ const ScheduleBoard = (props)=>{
     
     display : grid;
     grid-template-columns: repeat(10, 1fr);
-    justify-items : stretch;
+    justify-items : center;
     align-items : center;
     background-color : #eee;
 
