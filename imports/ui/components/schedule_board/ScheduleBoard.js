@@ -11,6 +11,7 @@ const ScheduleBoard = (props)=>{
     justify-items : center;
     align-items : center;
     background-color : #eee;
+    grid-auto-rows : minmax(50px, auto);
 
     `
 
