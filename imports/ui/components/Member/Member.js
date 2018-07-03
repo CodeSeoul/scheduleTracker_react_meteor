@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Dashboard = (props)=>{
+const Member = (props)=>{
 
     return(
 
@@ -10,4 +10,4 @@ const Dashboard = (props)=>{
     )
 }
 
-export default Dashboard;
+export default Member;
