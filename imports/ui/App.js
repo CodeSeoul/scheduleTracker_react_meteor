@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import Employees from '../api/employees';
+import ScheduleBoard from './components/schedule_board/ScheduleBoard'
+
 // App component - represents the whole app
 class App extends Component {
   state = {
@@ -41,7 +43,9 @@ class App extends Component {
           <h1>Schedule Tracker</h1>
         </header>
         <div className="App">{/* DashBoard
-      Schedule */}</div>
+      Schedule */}
+          <ScheduleBoard/>
+        </div>
       </div>
     );
   }
