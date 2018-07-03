@@ -13,10 +13,24 @@ const ScheduleBoard = (props)=>{
 
     `
 
+    const Tablehead = styled.div`
+    `
+
     return(
 
     <ScheduleContainer>
-        
+
+        <Tablehead>Section</Tablehead>
+        <Tablehead>Name</Tablehead>
+        <Tablehead>Rank</Tablehead>
+        <Tablehead>Mon</Tablehead>
+        <Tablehead>Tue</Tablehead>
+        <Tablehead>Wed</Tablehead>
+        <Tablehead>Thur</Tablehead>
+        <Tablehead>Fri</Tablehead>
+        <Tablehead>Sat</Tablehead>
+        <Tablehead>Sun</Tablehead>
+
     </ScheduleContainer>
 
     )
