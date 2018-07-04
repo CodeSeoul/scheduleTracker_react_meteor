@@ -5,6 +5,7 @@ const Dashboard = (props)=>{
     return(
 
         <div>
+            <button class='button'>Week 1</button>
         </div>
 
     )
