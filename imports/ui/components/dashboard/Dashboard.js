@@ -1,10 +1,11 @@
 import React from 'react';
+import Navbar from './DashboardStyle'
 
 const Dashboard = (props)=>{
 
     return(
 
-        <div>
+        <Navbar>
             <div>Logo</div>
 
             <button>Week1</button>
@@ -16,7 +17,7 @@ const Dashboard = (props)=>{
                     <li><a href='#'>Log out</a></li>
                 </ul>
             </nav>
-        </div>
+        </Navbar>
 
     )
 }
