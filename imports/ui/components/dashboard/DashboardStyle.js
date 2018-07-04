@@ -7,7 +7,7 @@ display : grid;
 grid-template-columns : 1fr 10rem 1fr;
 justify-items : center;
 align-items : center;
-background-color : ${variables.PrimaryColor}
+border-bottom : ${variables.PrimaryColor} 0.5rem solid;
 
 div{
     justify-self : start;
