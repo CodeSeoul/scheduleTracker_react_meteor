@@ -22,6 +22,23 @@ class ScheduleBoard extends React.Component {
   }
 
   handleSort = (event) => {
+    const classes = event.currentTarget.classList;
+    const sortKeys = /section|name|rank/;
+    let employees = this.state.employees;
+    let { key, order } = {...this.state.sort};
+    if(classes.contains(key))
+      order = -order;
+    else
+      key = classes.value.match(sortKeys)[0];
+    employees.sort((a,b)=>{
+      if(key == 'name')
+        return a['firstName'].localeCompare(b['firstName']) * order
+      else if(key == 'section')
+        return (a['section'] - b['section']) * order;
+      else
+        return (a['rank'] - b['rank']) * order;
+    })
+    this.setState({employees, sort:{key, order}});
   }
 
   render = () => {
