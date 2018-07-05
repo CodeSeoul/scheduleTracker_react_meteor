@@ -9,6 +9,10 @@ class ScheduleBoard extends React.Component {
 
   state = {
     employees: [],
+    sort: {
+      key: 'name',
+      order: 1
+    },
     days: []
   }
 
