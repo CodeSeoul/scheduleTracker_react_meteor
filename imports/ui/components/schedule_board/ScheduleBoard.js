@@ -16,12 +16,10 @@ class ScheduleBoard extends React.Component {
     days: []
   }
 
-  constructor(props){
-    super(props);
-    this.state.employees = props.employees;
-    this.state.days = props.days;
+  static getDerivedStateFromProps(nextProps, state) {
+    let nextEmployees = nextProps.employees;
+    return { employees: nextEmployees, days: nextProps.days };
   }
-
 
   handleSort = (event) => {
   }
