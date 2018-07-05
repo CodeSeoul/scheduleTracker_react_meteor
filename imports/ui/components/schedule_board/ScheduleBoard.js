@@ -27,6 +27,8 @@ class ScheduleBoard extends React.Component {
 
   static getDerivedStateFromProps(nextProps, state) {
     let nextEmployees = nextProps.employees;
+    if(state.employees != nextEmployees)
+      sortEmployees(nextEmployees, state.sort.key, state.sort.order);
     return { employees: nextEmployees, days: nextProps.days };
   }
 
@@ -48,15 +50,15 @@ class ScheduleBoard extends React.Component {
     const tableheads = this.state.days.map((day, index) => <Tablehead key={index}>{day.charAt(0).toUpperCase() + day.substr(1)}</Tablehead>)
 
     return (
-        <ScheduleContainer>
+      <ScheduleContainer>
         <Tablehead onClick={this.handleSort} className='section'>Section</Tablehead>
         <Tablehead onClick={this.handleSort} className='name'>Name</Tablehead>
         <Tablehead onClick={this.handleSort} className='rank'>Rank</Tablehead>
-            {tableheads}
-            {members}
-        </ScheduleContainer>
+        {tableheads}
+        {members}
+      </ScheduleContainer>
     )
-}
+  }
 }
 
 export default ScheduleBoard;
