@@ -23,16 +23,18 @@ class ScheduleBoard extends React.Component {
   }
 
 
+  handleSort = (event) => {
+  }
+
   render = () => {
     const members = this.state.employees.map(employee => <Member key={employee.id} {...employee} />);
     const tableheads = this.state.days.map((day, index) => <Tablehead key={index}>{day.charAt(0).toUpperCase() + day.substr(1)}</Tablehead>)
 
     return (
         <ScheduleContainer>
-
-            <Tablehead>Section</Tablehead>
-            <Tablehead>Name</Tablehead>
-            <Tablehead>Rank</Tablehead>
+        <Tablehead onClick={this.handleSort}>Section</Tablehead>
+        <Tablehead onClick={this.handleSort}>Name</Tablehead>
+        <Tablehead onClick={this.handleSort}>Rank</Tablehead>
             {tableheads}
             {members}
         </ScheduleContainer>
