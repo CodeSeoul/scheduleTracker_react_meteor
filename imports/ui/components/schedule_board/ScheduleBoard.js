@@ -3,7 +3,16 @@ import styled from 'styled-components'
 import Member from '../Member/Member'
 import { ScheduleContainer, Tablehead } from './ScheduleBoardStyle'
 
-const ScheduleBoard = (props) => {
+const sortEmployees = (employees, key, order) => {
+  employees.sort((a,b)=>{
+    if(key == 'name')
+      return a['firstName'].localeCompare(b['firstName']) * order
+    else if(key == 'section')
+      return (a['section'] - b['section']) * order;
+    else
+      return (a['rank'] - b['rank']) * order;
+  })
+}
 
 class ScheduleBoard extends React.Component {
 
@@ -30,14 +39,7 @@ class ScheduleBoard extends React.Component {
       order = -order;
     else
       key = classes.value.match(sortKeys)[0];
-    employees.sort((a,b)=>{
-      if(key == 'name')
-        return a['firstName'].localeCompare(b['firstName']) * order
-      else if(key == 'section')
-        return (a['section'] - b['section']) * order;
-      else
-        return (a['rank'] - b['rank']) * order;
-    })
+    sortEmployees(employees, key, order);
     this.setState({employees, sort:{key, order}});
   }
 
