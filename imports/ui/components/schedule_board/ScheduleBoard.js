@@ -8,6 +8,7 @@ const ScheduleBoard = (props)=>{
     console.log(props.database);
 
     const members = props.database.employees.map(employee=>{return <Member key={employee.id} employee={{...employee}}/>} );
+    const tableheads = props.database.days.map((day,index) => { return <Tablehead key={index}>{day.charAt(0).toUpperCase()+day.substr(1)}</Tablehead>} )
 
     return(
 
@@ -16,13 +17,7 @@ const ScheduleBoard = (props)=>{
         <Tablehead>Section</Tablehead>
         <Tablehead>Name</Tablehead>
         <Tablehead>Rank</Tablehead>
-        <Tablehead>Mon</Tablehead>
-        <Tablehead>Tue</Tablehead>
-        <Tablehead>Wed</Tablehead>
-        <Tablehead>Thur</Tablehead>
-        <Tablehead>Fri</Tablehead>
-        <Tablehead>Sat</Tablehead>
-        <Tablehead>Sun</Tablehead>
+        {tableheads}
         {members}
 
     </ScheduleContainer>
