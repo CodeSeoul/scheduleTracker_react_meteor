@@ -32,9 +32,9 @@ class ScheduleBoard extends React.Component {
 
     return (
         <ScheduleContainer>
-        <Tablehead onClick={this.handleSort}>Section</Tablehead>
-        <Tablehead onClick={this.handleSort}>Name</Tablehead>
-        <Tablehead onClick={this.handleSort}>Rank</Tablehead>
+        <Tablehead onClick={this.handleSort} className='section'>Section</Tablehead>
+        <Tablehead onClick={this.handleSort} className='name'>Name</Tablehead>
+        <Tablehead onClick={this.handleSort} className='rank'>Rank</Tablehead>
             {tableheads}
             {members}
         </ScheduleContainer>
