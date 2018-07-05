@@ -48,13 +48,9 @@ class App extends Component {
       Schedule */}
           <DashBoard />
           <ScheduleBoard
-            database={{
-              ...this.state,
-              employees: [...this.state.employees],
-              section: [...this.state.section],
-              rank: [...this.state.rank],
-              status: [...this.state.status]
-            }}
+            {
+            ...this.state
+            }
           />
         </div>
       </div>
