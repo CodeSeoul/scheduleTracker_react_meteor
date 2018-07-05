@@ -8,8 +8,8 @@ const ScheduleBoard = (props) => {
     console.log(props.database);
     const { employees, days, } = props
 
-    const members = employees.map(employee => { return <Member key={employee.id} employee={{ ...employee }} /> });
-    const tableheads = days.map((day, index) => { return <Tablehead key={index}>{day.charAt(0).toUpperCase() + day.substr(1)}</Tablehead> })
+    const members = employees.map(employee => <Member key={employee.id} {...employee} />);
+    const tableheads = days.map((day, index) => <Tablehead key={index}>{day.charAt(0).toUpperCase() + day.substr(1)}</Tablehead>)
 
     return (
 
