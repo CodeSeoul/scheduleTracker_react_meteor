@@ -1,26 +1,27 @@
 import React from 'react';
 import styled from 'styled-components'
 import Member from '../Member/Member'
-import {ScheduleContainer, Tablehead} from './ScheduleBoardStyle'
+import { ScheduleContainer, Tablehead } from './ScheduleBoardStyle'
 
-const ScheduleBoard = (props)=>{
+const ScheduleBoard = (props) => {
 
     console.log(props.database);
+    const { employees, days, } = props
 
-    const members = props.database.employees.map(employee=>{return <Member key={employee.id} employee={{...employee}}/>} );
-    const tableheads = props.database.days.map((day,index) => { return <Tablehead key={index}>{day.charAt(0).toUpperCase()+day.substr(1)}</Tablehead>} )
+    const members = employees.map(employee => <Member key={employee.id} {...employee} />);
+    const tableheads = days.map((day, index) => <Tablehead key={index}>{day.charAt(0).toUpperCase() + day.substr(1)}</Tablehead>)
 
-    return(
+    return (
 
-    <ScheduleContainer>
+        <ScheduleContainer>
 
-        <Tablehead>Section</Tablehead>
-        <Tablehead>Name</Tablehead>
-        <Tablehead>Rank</Tablehead>
-        {tableheads}
-        {members}
+            <Tablehead>Section</Tablehead>
+            <Tablehead>Name</Tablehead>
+            <Tablehead>Rank</Tablehead>
+            {tableheads}
+            {members}
 
-    </ScheduleContainer>
+        </ScheduleContainer>
 
     )
 }
