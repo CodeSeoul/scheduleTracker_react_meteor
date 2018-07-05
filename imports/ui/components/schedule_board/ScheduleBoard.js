@@ -5,14 +5,25 @@ import { ScheduleContainer, Tablehead } from './ScheduleBoardStyle'
 
 const ScheduleBoard = (props) => {
 
-    console.log(props.database);
-    const { employees, days, } = props
+class ScheduleBoard extends React.Component {
 
-    const members = employees.map(employee => <Member key={employee.id} {...employee} />);
-    const tableheads = days.map((day, index) => <Tablehead key={index}>{day.charAt(0).toUpperCase() + day.substr(1)}</Tablehead>)
+  state = {
+    employees: [],
+    days: []
+  }
+
+  constructor(props){
+    super(props);
+    this.state.employees = props.employees;
+    this.state.days = props.days;
+  }
+
+
+  render = () => {
+    const members = this.state.employees.map(employee => <Member key={employee.id} {...employee} />);
+    const tableheads = this.state.days.map((day, index) => <Tablehead key={index}>{day.charAt(0).toUpperCase() + day.substr(1)}</Tablehead>)
 
     return (
-
         <ScheduleContainer>
 
             <Tablehead>Section</Tablehead>
@@ -20,10 +31,9 @@ const ScheduleBoard = (props) => {
             <Tablehead>Rank</Tablehead>
             {tableheads}
             {members}
-
         </ScheduleContainer>
-
     )
+}
 }
 
 export default ScheduleBoard;
