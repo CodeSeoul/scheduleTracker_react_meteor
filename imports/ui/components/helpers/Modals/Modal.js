@@ -4,20 +4,23 @@ import LoginModal from './LoginModal';
 import WeekModal from './WeekModal';
 
 const Modal = ({ modal }) => {
-  console.log('modal:', modal);
-  let displayModal =
-    modal === 'week' ? (
-      <WeekModal />
-    ) : modal === 'dashboard' ? (
-      <DashboardModal />
-    ) : (
-      (modal = 'login' ? <LoginModal /> : null)
-    );
-
+  console.log('modal to render:', modal);
+  let displayModal = () => {
+    switch (modal) {
+      case 'week':
+        return <WeekModal />;
+      case 'dashboard':
+        return <DashboardModal />;
+      case 'login':
+        return <LoginModal />;
+      default:
+        return null;
+    }
+  };
   return (
     <div>
       <p>Modal</p>
-      {displayModal !== null ? displayModal : <p>No Modal set</p>}
+      {displayModal() !== null ? displayModal() : <p>No Modal set</p>}
     </div>
   );
 };
