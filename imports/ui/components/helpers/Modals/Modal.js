@@ -18,10 +18,7 @@ const Modal = ({ modal }) => {
     }
   };
   return (
-    <div>
-      <p>Modal</p>
-      {displayModal() !== null ? displayModal() : <p>No Modal set</p>}
-    </div>
+    <div>{displayModal() !== null ? displayModal() : <p>No Modal set</p>}</div>
   );
 };
 
