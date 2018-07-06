@@ -1,0 +1,7 @@
+import React from 'react';
+
+const DashboardModal = () => {
+  return <h1>Dashboard</h1>;
+};
+
+export default DashboardModal;
