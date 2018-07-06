@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import "../../../../client/main.css";
+import Navbar from './DashboardStyle'
+
 
 
 const WeekButtonContainer = styled.button`
@@ -33,6 +35,7 @@ cursor:pointer;
         background-color:#eff6fc;
     }
 `
+
 
 class Dashboard extends React.Component{
 
