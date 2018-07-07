@@ -25,15 +25,15 @@ class App extends Component {
     let employee1 = this.state.employees[0];
     let employee1_rank = this.state.rank[employee1.rank];
     let employee1_section = this.state.section[employee1.section];
-    //console.log("employee1", employee1);
-    //console.log("employee1_rank", employee1_rank);
-    //console.log("employee1_section", employee1_section);
+    //console.log('employee1', employee1);
+    //console.log('employee1_rank', employee1_rank);
+    //console.log('employee1_section', employee1_section);
 
     let employee1_week1 = employee1.schedule[0];
     let employee1_week1_Mon = employee1_week1[0];
-    //console.log("employee1_week1", employee1_week1);
+    //console.log('employee1_week1', employee1_week1);
     // console.log(
-    //   "employee1_week1_Mon_status",
+    //   'employee1_week1_Mon_status',
     //   this.state.status[employee1_week1_Mon]
     // );
 
@@ -43,7 +43,7 @@ class App extends Component {
         <header>
           <h1>Schedule Tracker</h1>
         </header>
-        <div className="App">
+        <div className='App'>
           {/* DashBoard
       Schedule */}
           <DashBoard />

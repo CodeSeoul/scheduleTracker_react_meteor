@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const FixedColumn = styled.div`
   width: 100%;
@@ -16,15 +16,15 @@ const Cell = FixedColumn.extend`
   ${props => {
     switch (props.type) {
       case 0:
-        return "background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(195,36,186,0.7));";
+        return 'background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(195,36,186,0.7));';
       case 1:
-        return "background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(210,13,13,0.7));";
+        return 'background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(210,13,13,0.7));';
       case 2:
-        return "background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(35,183,255,0.7));";
+        return 'background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(35,183,255,0.7));';
       case 3:
-        return "background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(21,110,23,0.7));";
+        return 'background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(21,110,23,0.7));';
       case 4:
-        return "background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(255,163,13,0.7));";
+        return 'background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(255,163,13,0.7));';
     }
   }};
 `;
