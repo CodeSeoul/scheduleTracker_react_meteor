@@ -65,4 +65,4 @@ const GeneralButton = styled.button`
 `;
 
 
-export default { Navbar, WeekButton, GeneralButton } ;
+export { Navbar, WeekButton, GeneralButton } ;
