@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import styled from 'styled-components';
 import '../../../../client/main.css';
 import Navbar from './DashboardStyle';
@@ -65,9 +66,19 @@ class Dashboard extends React.Component {
         <GeneralButton onClick={() => this.toggleModalHandler('dashboard')}>
           Dashboard
         </GeneralButton>
-        <GeneralButton onClick={() => this.toggleModalHandler('login')}>
-          Log in
-        </GeneralButton>
+        {!Meteor.userId() ? (
+          <GeneralButton onClick={() => this.toggleModalHandler('login')}>
+            Log in
+          </GeneralButton>
+        ) : (
+          <GeneralButton
+            onClick={() => {
+              Meteor.logout();
+            }}
+          >
+            Log Out
+          </GeneralButton>
+        )}
       </div>
     );
   }

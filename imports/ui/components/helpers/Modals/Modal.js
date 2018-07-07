@@ -3,7 +3,8 @@ import DashboardModal from './DashboardModal';
 import LoginModal from './LoginModal';
 import WeekModal from './WeekModal';
 
-const Modal = ({ modal }) => {
+const Modal = props => {
+  const { modal } = props;
   console.log('modal to render:', modal);
   let displayModal = () => {
     switch (modal) {
@@ -12,7 +13,7 @@ const Modal = ({ modal }) => {
       case 'dashboard':
         return <DashboardModal />;
       case 'login':
-        return <LoginModal />;
+        return <LoginModal {...props} />;
       default:
         return null;
     }

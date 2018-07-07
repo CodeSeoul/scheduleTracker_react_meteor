@@ -1,7 +1,8 @@
 import React from 'react';
 import Modal from './Modal';
 
-const ModalContainer = ({ showModal, toggleModalHandler, modal }) => {
+const ModalContainer = props => {
+  const { showModal, toggleModalHandler } = props;
   const showHideClassName = showModal
     ? 'modal display-block'
     : 'modal display-none';
@@ -9,7 +10,7 @@ const ModalContainer = ({ showModal, toggleModalHandler, modal }) => {
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
-        <Modal modal={modal} />
+        <Modal {...props} />
         <button onClick={toggleModalHandler}>Close</button>
       </section>
     </div>

@@ -17,6 +17,8 @@ class App extends Component {
     return { ...state, employees: nextProps.employees };
   }
   render() {
+    console.log('USER:', Meteor.user());
+    console.log('USER_ID:', Meteor.userId());
     while (this.state.employees.length === 0) {
       return null;
     }

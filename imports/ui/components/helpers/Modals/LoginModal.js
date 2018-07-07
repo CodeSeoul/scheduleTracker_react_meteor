@@ -3,15 +3,21 @@ import React from 'react';
 class LoginModal extends React.Component {
   state = {
     errors: [],
-    loginName: '',
+    username: '',
     hasError: false
   };
 
+  onChangeHandler = e => {
+    this.setState({
+      ...this.state,
+      username: e.target.value
+    });
+  };
   login = e => {
     e.preventDefault();
     e.stopPropagation();
     Meteor.loginWithPassword(
-      this.state.loginName,
+      this.state.username,
       this.password.value,
       error => {
         if (error) {
@@ -19,8 +25,10 @@ class LoginModal extends React.Component {
         }
       }
     );
+    this.props.toggleModalHandler();
   };
   render() {
+    console.log('this.props', this.props);
     return (
       <div>
         <h1>Log In</h1>
@@ -29,24 +37,19 @@ class LoginModal extends React.Component {
             <input
               type="text"
               placeholder="Your Username"
-              onChange={e => {
-                let name = e.target.value;
-                this.setState({
-                  loginName: name
-                });
-              }}
-              ref={input => (this.username = input)}
-              value={this.state.loginName}
-            />{' '}
-          </div>{' '}
+              name="username"
+              onChange={e => this.onChangeHandler(e)}
+              value={this.state.username}
+            />
+          </div>
           <div>
             <input
               type="password"
               placeholder="Password"
               ref={input => (this.password = input)}
-            />{' '}
-          </div>{' '}
-          <button>Login </button>{' '}
+            />
+          </div>
+          <button onClick={this.login}>Login </button>
         </form>
       </div>
     );
