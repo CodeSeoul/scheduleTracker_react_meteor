@@ -14,4 +14,4 @@ const ModalMain = styled.section`
     transition: opacity 400ms ease-in;
 `;
 
-export default ModalMain;
+export {ModalMain};

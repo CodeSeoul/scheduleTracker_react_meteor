@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from './Modal';
+import {ModalMain} from './ModalStyle';
 
 const ModalContainer = ({ showModal, toggleModalHandler, modal }) => {
   const showHideClassName = showModal
@@ -8,10 +9,10 @@ const ModalContainer = ({ showModal, toggleModalHandler, modal }) => {
 
   return (
     <div className={showHideClassName}>
-      <section className="modal-main">
+      <ModalMain>
         <Modal modal={modal} />
         <button onClick={toggleModalHandler}>Close</button>
-      </section>
+      </ModalMain>
     </div>
   );
 };
