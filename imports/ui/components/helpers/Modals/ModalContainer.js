@@ -1,19 +1,19 @@
 import React from 'react';
 import Modal from './Modal';
-import {ModalMain} from './ModalStyle';
+import {ModalMain, ModalWrapper} from './ModalStyle';
 
 const ModalContainer = ({ showModal, toggleModalHandler, modal }) => {
-  const showHideClassName = showModal
-    ? 'modal display-block'
-    : 'modal display-none';
+  const toggleDisplay = showModal
+    ? true
+    : false;
 
   return (
-    <div className={showHideClassName}>
+    <ModalWrapper toggle={toggleDisplay}>
       <ModalMain>
         <Modal modal={modal} />
         <button onClick={toggleModalHandler}>Close</button>
       </ModalMain>
-    </div>
+    </ModalWrapper>
   );
 };
 

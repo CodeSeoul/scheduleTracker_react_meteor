@@ -14,4 +14,14 @@ const ModalMain = styled.section`
     transition: opacity 400ms ease-in;
 `;
 
-export {ModalMain};
+const ModalWrapper = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: ${props => props.toggle?'block':'none'};
+`;
+
+export {ModalMain, ModalWrapper};
