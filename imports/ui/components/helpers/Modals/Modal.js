@@ -4,7 +4,7 @@ import LoginModal from './LoginModal';
 import WeekModal from './WeekModal';
 
 const Modal = ({ modal }) => {
-  console.log('modal:', modal);
+  //console.log('modal:', modal);
   let displayModal =
     modal === 'week' ? (
       <WeekModal />
