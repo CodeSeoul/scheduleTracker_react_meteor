@@ -24,4 +24,22 @@ const ModalWrapper = styled.div`
     display: ${props => props.toggle?'block':'none'};
 `;
 
-export {ModalMain, ModalWrapper};
+const CloseButton = styled.button`
+    width:30px;
+    height:30px;
+    position:fixed;
+    right:2px;
+    top:2px;
+    background-color:transparent;
+    display: block;
+    border: none;
+    text-align:right;
+    font-size: 20px ;
+    color: #ababab;
+    transform: scale(1.3,1);
+    font-weight:500;
+    &:focus{
+        outline: none;
+    }
+`;
+export {ModalMain, ModalWrapper,CloseButton};

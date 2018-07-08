@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from './Modal';
-import {ModalMain, ModalWrapper} from './ModalStyle';
+import {ModalMain, ModalWrapper, CloseButton} from './ModalStyle';
 
 const ModalContainer = ({ showModal, toggleModalHandler, modal }) => {
   const toggleDisplay = showModal
@@ -9,9 +9,9 @@ const ModalContainer = ({ showModal, toggleModalHandler, modal }) => {
 
   return (
     <ModalWrapper toggle={toggleDisplay}>
+          <CloseButton onClick ={toggleModalHandler}>X</CloseButton>
       <ModalMain>
         <Modal modal={modal} />
-        <button onClick={toggleModalHandler}>Close</button>
       </ModalMain>
     </ModalWrapper>
   );
