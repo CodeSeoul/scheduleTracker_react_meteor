@@ -4,6 +4,7 @@ import Employees from '../api/employees';
 import ScheduleBoard from './components/schedule_board/ScheduleBoard';
 import DashBoard from './components/dashboard/Dashboard';
 
+
 // App component - represents the whole app
 class App extends Component {
   state = {

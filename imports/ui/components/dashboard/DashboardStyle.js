@@ -33,23 +33,24 @@ nav{
 `
 
 const WeekButton = styled.button`
-  background-color: #81baea;
+  background-color: #14213d;
   border: none;
-  padding: 10px;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  box-shadow: 0 -2px 5px 3px #659ac6 inset, 0 5px 5px rgba(3, 25, 41, 0.17),
+  padding: 5px;
+  border-radius: 5px;
+  width:auto;
+  height: auto;
+  box-shadow: 0 -2px 5px 3px #697183 inset, 0 5px 5px rgba(3, 25, 41, 0.17),
     0 15px rgba(255, 255, 255, 0.25) inset;
   font-size: 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  color: #fafdff;
-  text-shadow: 2px 2px #818181;
+  color: #e9e9e9;
+  /* text-shadow: 2px 2px #818181; */
   cursor: pointer;
   &:hover {
-    background-color: #8dc0ec;
+    background-color: #3e4960;
+    color: #fca311;
   }
   &:focus{
         outline: none;
@@ -57,13 +58,16 @@ const WeekButton = styled.button`
 `;
 const GeneralButton = styled.button`
   border: none;
+  margin: 0 5px 0 5px;
+  padding: 2px 7px 2px 7px;
   font-size: 20px;
   width: auto;
   height: auto;
   background: none;
   cursor: pointer;
+  color: #14213d;
   &:hover {
-    background-color: #eff6fc;
+    color: #fca311;
   }
   &:focus{
         outline: none;

@@ -26,13 +26,15 @@ class Dashboard extends React.Component {
           modal={this.state.modal}
         />
 
-        <WeekButton onClick={() => this.toggleModalHandler('week')}>
-          Week 1
-        </WeekButton>
 
         <GeneralButton onClick={() => this.toggleModalHandler('dashboard')}>
           Dashboard
         </GeneralButton>
+
+        <WeekButton onClick={() => this.toggleModalHandler('week')}>
+          Week 1
+        </WeekButton>
+
         <GeneralButton onClick={() => this.toggleModalHandler('login')}>
           Log in
         </GeneralButton>
