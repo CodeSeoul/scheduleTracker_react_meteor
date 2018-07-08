@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { FixedColumn, Cell } from './MemberStyle'
+import { FixedColumn, Cell } from '../../styles/MemberStyle'
 
 const Member = props => {
 

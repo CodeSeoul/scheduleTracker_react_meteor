@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import Member from '../Member/Member'
-import { ScheduleContainer, Tablehead } from './ScheduleBoardStyle'
+import { ScheduleContainer, Tablehead } from '../../styles/ScheduleBoardStyle'
 
 const sortEmployees = (employees, key, order) => {
   employees.sort((a,b)=>{

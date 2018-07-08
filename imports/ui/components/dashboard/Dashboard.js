@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../../../../client/main.css';
-import Navbar from './DashboardStyle';
 import ModalContainer from '../helpers/Modals/ModalContainer';
 
 const WeekButton = styled.button`
