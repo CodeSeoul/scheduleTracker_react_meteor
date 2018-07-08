@@ -96,7 +96,7 @@ const Header = styled.h1`
   color: #ffffff;
   display:inline-block;
   font-family: 'Galada', cursive;
-  text-align:left;
+  margin-left:25px;
 `;
 
 
@@ -104,7 +104,9 @@ const ButtonWrapper =styled.div`
   width:auto;
   height:auto;
   display:inline-block;
-  text-align:right;
+  position:fixed;
+  right:20px;
+  top:20px;
 `;
 
 export { Navbar, WeekButton, GeneralButton, Header, DashboardWrapper,ButtonWrapper } ;
