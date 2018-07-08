@@ -8,7 +8,7 @@ justify-items : center;
 align-items : center;
 background-color : #eee;
 grid-auto-rows : minmax(50px, auto);
-margin : 3rem 1rem;
+margin : 5rem 1rem;
 `
 
 const Tablehead = styled.div`

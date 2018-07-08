@@ -41,9 +41,6 @@ class App extends Component {
     ///////////////////////////////////////////////////////////
     return (
       <div>
-        <header>
-          <h1>Schedule Tracker</h1>
-        </header>
         <div className="App">
           {/* DashBoard
       Schedule */}

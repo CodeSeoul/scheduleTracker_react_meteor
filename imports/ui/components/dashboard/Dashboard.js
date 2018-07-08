@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../../../../client/main.css';
-import { Navbar, WeekButton, GeneralButton } from './DashboardStyle';
+import { Navbar, WeekButton, GeneralButton, Header, DashboardWrapper, ButtonWrapper } from './DashboardStyle';
 import ModalContainer from '../helpers/Modals/ModalContainer';
 
 class Dashboard extends React.Component {
@@ -19,26 +19,31 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div>
+      <DashboardWrapper>
         <ModalContainer
           showModal={this.state.showModal}
           toggleModalHandler={this.toggleModalHandler}
           modal={this.state.modal}
         />
 
+        <Header>
+          Schedule Tracker
+        </Header>
 
-        <GeneralButton onClick={() => this.toggleModalHandler('dashboard')}>
-          Dashboard
-        </GeneralButton>
+      <ButtonWrapper>
+          <GeneralButton onClick={() => this.toggleModalHandler('week')}>
+            Week 1
+          </GeneralButton>
 
-        <WeekButton onClick={() => this.toggleModalHandler('week')}>
-          Week 1
-        </WeekButton>
+          <GeneralButton onClick={() => this.toggleModalHandler('dashboard')}>
+            Dashboard
+          </GeneralButton>
 
-        <GeneralButton onClick={() => this.toggleModalHandler('login')}>
-          Log in
-        </GeneralButton>
-      </div>
+          <GeneralButton onClick={() => this.toggleModalHandler('login')}>
+            Log in
+          </GeneralButton>
+        </ButtonWrapper>
+      </DashboardWrapper>
     );
   }
 }

@@ -65,7 +65,7 @@ const GeneralButton = styled.button`
   height: auto;
   background: none;
   cursor: pointer;
-  color: #14213d;
+  color: #ffffff;
   &:hover {
     color: #fca311;
   }
@@ -74,5 +74,37 @@ const GeneralButton = styled.button`
     }
 `;
 
+const DashboardWrapper= styled.div`
+    width: 100%;
+    height:auto;
+    position:fixed;
+    top:0;
+    left:0;
+    text-align: justify; 
+    background: linear-gradient(
+    to bottom,
+    rgba(20, 33, 61, 1),
+    rgba(41, 53, 78, 0.95)
+  );
+`;
 
-export { Navbar, WeekButton, GeneralButton } ;
+
+const Header = styled.h1`
+  font-size: 24px;
+  width:auto;
+  height:auto;
+  color: #ffffff;
+  display:inline-block;
+  font-family: 'Galada', cursive;
+  text-align:left;
+`;
+
+
+const ButtonWrapper =styled.div`
+  width:auto;
+  height:auto;
+  display:inline-block;
+  text-align:right;
+`;
+
+export { Navbar, WeekButton, GeneralButton, Header, DashboardWrapper,ButtonWrapper } ;
