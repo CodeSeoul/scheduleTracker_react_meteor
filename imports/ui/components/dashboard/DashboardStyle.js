@@ -51,6 +51,9 @@ const WeekButton = styled.button`
   &:hover {
     background-color: #8dc0ec;
   }
+  &:focus{
+        outline: none;
+    }
 `;
 const GeneralButton = styled.button`
   border: none;
@@ -62,6 +65,9 @@ const GeneralButton = styled.button`
   &:hover {
     background-color: #eff6fc;
   }
+  &:focus{
+        outline: none;
+    }
 `;
 
 
