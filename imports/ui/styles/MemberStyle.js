@@ -9,9 +9,10 @@ const FixedColumn = styled.div`
   border: 0.05rem #ccc solid;
 `;
 
-const Cell = FixedColumn.extend`
-  width: 95%;
-  height: 95%;
+
+const Select = styled.select`
+  width: 100%;
+  height: 100%;
 
   ${props => {
     switch (props.type) {
@@ -29,4 +30,8 @@ const Cell = FixedColumn.extend`
   }};
 `;
 
-export { Cell, FixedColumn };
+const Option = styled.option`
+
+`
+
+export { Select, Option, FixedColumn };
