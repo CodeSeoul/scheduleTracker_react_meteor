@@ -66,6 +66,7 @@ const GeneralButton = styled.button`
   background: none;
   cursor: pointer;
   color: #ffffff;
+  font-weight:700;
   &:hover {
     color: #fca311;
   }
@@ -89,24 +90,24 @@ const DashboardWrapper= styled.div`
 `;
 
 
-const Header = styled.h1`
-  font-size: 24px;
+const Header = styled.div`
+  font-size: 40px;
   width:auto;
   height:auto;
   color: #ffffff;
-  display:inline-block;
+  float:left;
   font-family: 'Galada', cursive;
   margin-left:25px;
+  margin-top:10px;
 `;
 
 
 const ButtonWrapper =styled.div`
   width:auto;
   height:auto;
-  display:inline-block;
-  position:fixed;
-  right:20px;
-  top:20px;
+  float:right;
+  margin-top: 30px;
+  margin-right: 25px;
 `;
 
 export { Navbar, WeekButton, GeneralButton, Header, DashboardWrapper,ButtonWrapper } ;
