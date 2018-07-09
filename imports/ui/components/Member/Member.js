@@ -4,7 +4,7 @@ import { FixedColumn, Select, Option } from '../../styles/MemberStyle'
 const Member = props => {
 
   //I'm going to add 'week' key to the state in App component and pass it to Member component. For now, I'm using week 0(index '0')
-  const { schedule, _id, section, firstName, rank, status } = props
+  const { schedule, _id, section, firstName, Rank, Section, rank, status } = props
   const weeklySchedule = schedule[0].map((dailySchedule, index) => {
     return (
       <Select type={dailySchedule} key={_id + index}>
@@ -12,14 +12,16 @@ const Member = props => {
       </Select>
       );
   });
+
+  console.log(props);
  
 
 
   return (
     <Fragment>
-      <FixedColumn>{section}</FixedColumn>
+      <FixedColumn>{Section[section]}</FixedColumn>
       <FixedColumn>{firstName}</FixedColumn>
-      <FixedColumn>{rank}</FixedColumn>
+      <FixedColumn>{Rank[rank]}</FixedColumn>
       {weeklySchedule}
     </Fragment>
   );
