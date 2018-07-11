@@ -1,37 +1,6 @@
 import styled from 'styled-components'
 import * as variables from '../../styles/variables'
 
-const Navbar = styled.div`
-
-display : grid;
-grid-template-columns : 1fr 10rem 1fr;
-justify-items : center;
-align-items : center;
-border-bottom : ${variables.PrimaryColor} 0.5rem solid;
-
-div{
-    justify-self : start;
-}
-
-nav{
-    justify-self : end;
-  }
-  
-  nav ul{
-    display : grid;
-    grid-template-columns : repeat(3,minmax(100px,1fr));
-    justify-items: center;
-  }
-  li{
-    list-style :none;
-  }
-  a{
-    text-decoration : none;
-    color : black;
-  }
-
-`
-
 const WeekButton = styled.button`
   background-color: #14213d;
   border: none;
@@ -110,4 +79,4 @@ const ButtonWrapper =styled.div`
   margin-right: 25px;
 `;
 
-export { Navbar, WeekButton, GeneralButton, Header, DashboardWrapper,ButtonWrapper } ;
+export { WeekButton, GeneralButton, Header, DashboardWrapper,ButtonWrapper} ;

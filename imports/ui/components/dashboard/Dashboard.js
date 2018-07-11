@@ -1,9 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import '../../../../client/main.css';
-import { Navbar, WeekButton, GeneralButton, Header, DashboardWrapper, ButtonWrapper } from './DashboardStyle';
+import { GeneralButton, Header, DashboardWrapper, ButtonWrapper } from './DashboardStyle';
 import ModalContainer from '../helpers/Modals/ModalContainer';
-
+import Navbar from './Navbar';
 class Dashboard extends React.Component {
   state = {
     showModal: false,
@@ -29,8 +28,10 @@ class Dashboard extends React.Component {
         <Header>
           Schedule Tracker
         </Header>
+      
+        <Navbar />
 
-      <ButtonWrapper>
+      {/* <ButtonWrapper>
           <GeneralButton onClick={() => this.toggleModalHandler('week')}>
             Week 1
           </GeneralButton>
@@ -42,7 +43,7 @@ class Dashboard extends React.Component {
           <GeneralButton onClick={() => this.toggleModalHandler('login')}>
             Log in
           </GeneralButton>
-        </ButtonWrapper>
+        </ButtonWrapper> */}
       </DashboardWrapper>
     );
   }
