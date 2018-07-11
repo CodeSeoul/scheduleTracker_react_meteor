@@ -4,6 +4,20 @@ import Employees from '../../../api/employees';
 import ScheduleBoard from '../schedule_board/ScheduleBoard';
 import DashBoard from '../dashboard/Dashboard';
 
+// Context API
+
+export const ScheduleContext = React.createContext();
+
+class ScheduleContextProvider extends Component{
+  render(){
+    return(
+      <ScheduleContext.Provider value='test'>
+        {this.props.children}
+      </ScheduleContext.Provider>
+    )
+  }
+} 
+
 // Schedule component - represents the whole Schedule
 class Schedule extends Component {
   state = {
@@ -54,15 +68,17 @@ class Schedule extends Component {
 
     ///////////////////////////////////////////////////////////
     return (
-      <div>
-        <header>
-          <h1>Schedule Tracker</h1>
-        </header>
+      <ScheduleContextProvider>
         <div>
-          <DashBoard />
-          <ScheduleBoard ScheduleChangeHandler={(event, id, day)=>this.ScheduleChangeHandler(event, id, day)} {...this.state} />
+          <header>
+            <h1>Schedule Tracker</h1>
+          </header>
+          <div>
+            <DashBoard />
+            <ScheduleBoard ScheduleChangeHandler={(event, id, day)=>this.ScheduleChangeHandler(event, id, day)} {...this.state} />
+          </div>
         </div>
-      </div>
+      </ScheduleContextProvider>
     );
   }
 }
