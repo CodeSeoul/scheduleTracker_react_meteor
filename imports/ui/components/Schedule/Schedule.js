@@ -16,6 +16,21 @@ class Schedule extends Component {
   static getDerivedStateFromProps(nextProps, state) {
     return { ...state, employees: nextProps.employees };
   }
+
+  ScheduleChangeHandler=(event, id, day)=>{
+    event.preventDefault();
+    const newEmployees = [...this.state.employees];
+    newEmployees.forEach(
+      (employee,index) =>{
+        id === employee._id ? newEmployees[index].schedule[0][day]=Number(event.target.value) : null;
+      }
+    );
+    this.setState({
+      employees : newEmployees
+    }
+   ) 
+  }
+
   render() {
     while (this.state.employees.length === 0) {
       return null;
@@ -45,7 +60,7 @@ class Schedule extends Component {
         </header>
         <div>
           <DashBoard />
-          <ScheduleBoard {...this.state} />
+          <ScheduleBoard ScheduleChangeHandler={(event, id, day)=>this.ScheduleChangeHandler(event, id, day)} {...this.state} />
         </div>
       </div>
     );

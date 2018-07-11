@@ -12,18 +12,21 @@ const Member = props => {
     Rank,
     Section,
     rank,
-    status
+    status,
+    ScheduleChangeHandler
   } = props;
   const weeklySchedule = schedule[0].map((dailySchedule, index) => {
     return (
       <Select
         type={dailySchedule}
-        key={_id + index}>
+        key={_id + index}
+        value={dailySchedule}
+        onChange={(event)=>ScheduleChangeHandler(event, _id, index)}>
           {status.map((stat, idx) => {
             return (
               <Option
                 key={_id + idx}
-                selected={dailySchedule === idx ? "selected" : ""}>
+                value={idx}>
                 {stat}
               </Option>
             );

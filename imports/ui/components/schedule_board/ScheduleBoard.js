@@ -46,7 +46,7 @@ class ScheduleBoard extends React.Component {
   }
 
   render = () => {
-    const members = this.state.employees.map(employee => <Member Section = {this.props.section} Rank={this.props.rank} {...this.props} key={employee.id} {...employee} />);
+    const members = this.state.employees.map(employee => <Member ScheduleChangeHandler={(event, id, day)=>ScheduleBoardHandler(event, id, day)} Section = {this.props.section} Rank={this.props.rank} {...this.props} key={employee.id} {...employee} />);
     const tableheads = this.state.days.map((day, index) => <Tablehead key={index}>{day.charAt(0).toUpperCase() + day.substr(1)}</Tablehead>)
 
     return (
