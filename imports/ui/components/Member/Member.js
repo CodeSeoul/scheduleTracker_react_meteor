@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { FixedColumn, Select, Option } from "../../styles/MemberStyle";
+import React, { Fragment } from 'react';
+import { FixedColumn, Select, Option } from '../../styles/MemberStyle';
 import { ScheduleContext } from '../Schedule/Schedule';
 
 const Member = props => {
@@ -22,31 +22,30 @@ const Member = props => {
         type={dailySchedule}
         key={_id + index}
         value={dailySchedule}
-        onChange={(event)=>ScheduleChangeHandler(event, _id, index)}>
-          {status.map((stat, idx) => {
-            return (
-              <Option
-                key={_id + idx}
-                value={idx}>
-                {stat}
-              </Option>
-            );
-          })}
+        onChange={event => ScheduleChangeHandler(event, _id, index)}
+      >
+        {status.map((stat, idx) => {
+          return (
+            <Option key={_id + idx} value={idx}>
+              {stat}
+            </Option>
+          );
+        })}
       </Select>
     );
   });
 
   return (
     <ScheduleContext.Consumer>
-      {(context)=>{
-        return(
+      {context => {
+        return (
           <Fragment>
             <FixedColumn>{Section[section]}</FixedColumn>
             <FixedColumn>{`${firstName} ${lastName}`}</FixedColumn>
             <FixedColumn>{Rank[rank]}</FixedColumn>
             {weeklySchedule}
           </Fragment>
-        )
+        );
       }}
     </ScheduleContext.Consumer>
   );
