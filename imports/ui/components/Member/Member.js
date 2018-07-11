@@ -32,8 +32,6 @@ const Member = props => {
     );
   });
 
-  console.log(props);
-
   return (
     <Fragment>
       <FixedColumn>{Section[section]}</FixedColumn>
