@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import Member from '../Member/Member'
 import { ScheduleContainer, Tablehead } from '../../styles/ScheduleBoardStyle'
 
+
+
 const sortEmployees = (employees, key, order) => {
   employees.sort((a,b)=>{
     if(key == 'name')
@@ -17,12 +19,10 @@ const sortEmployees = (employees, key, order) => {
 class ScheduleBoard extends React.Component {
 
   state = {
-    employees: [],
     sort: {
       key: 'name',
       order: 1
-    },
-    days: []
+    }
   }
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -30,24 +30,29 @@ class ScheduleBoard extends React.Component {
     if(state.employees != nextEmployees)
       sortEmployees(nextEmployees, state.sort.key, state.sort.order);
     return { employees: nextEmployees, days: nextProps.days };
+    
   }
 
   handleSort = (event) => {
     const classes = event.currentTarget.classList;
     const sortKeys = /section|name|rank/;
-    let employees = this.state.employees;
+    let employees = this.props.employees;
     let { key, order } = {...this.state.sort};
     if(classes.contains(key))
       order = -order;
     else
       key = classes.value.match(sortKeys)[0];
     sortEmployees(employees, key, order);
-    this.setState({employees, sort:{key, order}});
+    this.setState({sort:{key, order}});
   }
 
   render = () => {
-    const members = this.state.employees.map(employee => <Member ScheduleChangeHandler={(event, id, day)=>ScheduleBoardHandler(event, id, day)} Section = {this.props.section} Rank={this.props.rank} {...this.props} key={employee.id} {...employee} />);
-    const tableheads = this.state.days.map((day, index) => <Tablehead key={index}>{day.charAt(0).toUpperCase() + day.substr(1)}</Tablehead>)
+    const {
+      employees,
+      days
+    } = this.props;
+    const members = employees.map(employee => <Member ScheduleChangeHandler={(event, id, day)=>ScheduleBoardHandler(event, id, day)} Section = {this.props.section} Rank={this.props.rank} {...this.props} key={employee.id} {...employee} />);
+    const tableheads = days.map((day, index) => <Tablehead key={index}>{day.charAt(0).toUpperCase() + day.substr(1)}</Tablehead>)
 
     return (
       <ScheduleContainer>
