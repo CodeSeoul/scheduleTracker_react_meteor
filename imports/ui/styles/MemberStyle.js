@@ -5,6 +5,7 @@ const FixedColumn = styled.div`
   height: 100%;
   display: grid;
   justify-items: center;
+  text-align : center;
   align-items: center;
   border: 0.05rem #ccc solid;
 `;
