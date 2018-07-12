@@ -1,5 +1,6 @@
 Accounts.onCreateUser((options, user) => {
-  console.log('options, user', options, user);
+  console.log('options', options);
+  console.log('user', user);
 
   const scheduleArrays = () => {
     let schedule = [];
@@ -9,7 +10,7 @@ Accounts.onCreateUser((options, user) => {
     }
     return schedule;
   };
-  user.schedule = {
+  user.info = {
     rank: 0,
     section: 0,
     schedule: scheduleArrays()

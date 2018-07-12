@@ -8,26 +8,23 @@ Meteor.publish('currentUser', function() {
     {
       //fields defines properties to be made available
       fields: {
-        schedule: 1,
-        rank: 1,
-        section: 1
+        info: 1
       }
     }
   );
 });
 
-Meteor.publish('allUser', function() {
+Meteor.publish('allUsers', function() {
   return Meteor.users.find(
     {},
     {
       fields: {
-        schedule: 1,
-        rank: 1,
-        section: 1
+        info: 1
       }
     }
   );
 });
+
 Meteor.startup(() => {
   // code to run on server at startup
 });

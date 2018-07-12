@@ -87,6 +87,8 @@ class App extends Component {
 }
 
 export default createContainer(() => {
-  Meteor.subscribe('employees');
-  return { employees: Employees.find({}).fetch() };
+  Meteor.subscribe('allUsers');
+  return {
+    users: Meteor.users.find({}).fetch()
+  };
 }, App);
