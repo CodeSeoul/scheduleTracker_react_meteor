@@ -3,9 +3,10 @@ import { FixedColumn, Select, Option } from '../../styles/MemberStyle';
 import { ScheduleContext } from '../../App';
 
 const Member = props => {
+  console.log('props, Member', props);
   //I'm going to add 'week' key to the state in App component and pass it to Member component. For now, I'm using week 0(index '0')
   const {
-    schedule,
+    info,
     _id,
     section,
     lastName,
@@ -14,15 +15,16 @@ const Member = props => {
     Section,
     rank,
     status,
-    ScheduleChangeHandler
+    scheduleChangeHandler
   } = props;
+  const { schedule } = info;
   const weeklySchedule = schedule[0].map((dailySchedule, index) => {
     return (
       <Select
         type={dailySchedule}
         key={_id + index}
         value={dailySchedule}
-        onChange={event => ScheduleChangeHandler(event, _id, index)}
+        onChange={event => scheduleChangeHandler(event, _id, index)}
       >
         {status.map((stat, idx) => {
           return (
