@@ -12,6 +12,7 @@ const ModalMain = styled.section`
     -webkit-transition: opacity 400ms ease-in;
     -moz-transition: opacity 400ms ease-in;
     transition: opacity 400ms ease-in;
+    z-index: 3 !important;
 `;
 
 const ModalWrapper = styled.div`
@@ -22,6 +23,7 @@ const ModalWrapper = styled.div`
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     display: ${props => props.toggle?'block':'none'};
+    z-index: 2 !important;
 `;
 
 const CloseButton = styled.button`
@@ -38,6 +40,7 @@ const CloseButton = styled.button`
     color: #ababab;
     transform: scale(1.3,1);
     font-weight:500;
+    z-index: 2 !important;
     &:focus{
         outline: none;
     }

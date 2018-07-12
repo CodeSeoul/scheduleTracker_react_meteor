@@ -1,35 +1,43 @@
 import React from 'react';
 import {Nav, NavMenu, NavMenuItem, NavSubMenu, NavSubMenuItem} from './NavbarStyle';
 
-class SubMenu extends React.Component{
-    render(){
-        return(
-            <NavSubMenu>
-                <NavSubMenuItem>
-                    Week 1
-                </NavSubMenuItem>
-                <NavSubMenuItem>
-                    Week 2
-                </NavSubMenuItem>
-                <NavSubMenuItem>
-                    Week 3
-                </NavSubMenuItem>    
-            </NavSubMenu>
-        )      
-    }
+const weekOfTheYear = ()=>{
+    let now = new Date();
+    let onejan = new Date(now.getFullYear(), 0, 1);
+    week = Math.ceil( (((now - onejan) / 86400000) + onejan.getDay() + 1) / 7 );
+    return week;
 }
 
+const SubMenu = ({handleWeekSelect}) =>{
+    let weeks = Array.from(new Array(52),(val,index)=>index+1);
+    const NavSubMenuItems = weeks.map((week) =>
+        <NavSubMenuItem key={week.toString()} onClick={()=>handleWeekSelect(week)}>
+           Week {week}
+        </NavSubMenuItem>
+    );
+    return(
+        <NavSubMenu>{NavSubMenuItems}</NavSubMenu>
+    );
+};
 class Navbar extends React.Component{
-    state = {
-        showItem: false
-    };
-
+    constructor(props){
+        super(props);
+        this.state= {
+            showItem: false,
+            week: weekOfTheYear()
+        };
+    }
+    
     handleHover = ()=>{
         this.setState({showItem: true});
     };
 
     handleLeave = ()=>{
         this.setState({showItem: false});
+    };
+
+    handleWeekSelect = (selected) =>{
+        this.setState({week: selected})
     }
     
     render(){
@@ -37,16 +45,18 @@ class Navbar extends React.Component{
         <Nav>
             <NavMenu>
                 <NavMenuItem onMouseLeave={this.handleLeave}>
-                    <a onMouseEnter={this.handleHover}>Week 1</a>
-                    { this.state.showItem && <SubMenu />}
+                    <a onMouseEnter={this.handleHover} 
+                       onClick={()=>this.props.toggleModalHandler('week')}>
+                       Week {this.state.week}</a>
+                    { this.state.showItem && <SubMenu handleWeekSelect={this.handleWeekSelect} />}
                 </NavMenuItem>
                 
                 <NavMenuItem>
-                    <a>Dashboard</a>
+                    <a onClick={()=>this.props.toggleModalHandler('dashboard')}>Dashboard</a>
                 </NavMenuItem>
 
                 <NavMenuItem>
-                    <a>Log in</a>
+                    <a onClick={()=>this.props.toggleModalHandler('login')}>Log in</a>
                 </NavMenuItem>
 
             </NavMenu>
@@ -54,9 +64,5 @@ class Navbar extends React.Component{
         )
     };
 }
-
-
-
-
 
 export default Navbar;

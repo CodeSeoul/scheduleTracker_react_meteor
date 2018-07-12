@@ -68,6 +68,10 @@ const Header = styled.div`
   font-family: 'Galada', cursive;
   margin-left:25px;
   margin-top:10px;
+  padding:0;
+  &:hover{
+    color: #fca311;
+  }
 `;
 
 

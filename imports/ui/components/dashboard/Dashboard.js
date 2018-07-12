@@ -3,6 +3,7 @@ import '../../../../client/main.css';
 import { GeneralButton, Header, DashboardWrapper, ButtonWrapper } from './DashboardStyle';
 import ModalContainer from '../helpers/Modals/ModalContainer';
 import Navbar from './Navbar';
+
 class Dashboard extends React.Component {
   state = {
     showModal: false,
@@ -29,7 +30,7 @@ class Dashboard extends React.Component {
           Schedule Tracker
         </Header>
       
-        <Navbar />
+        <Navbar toggleModalHandler={this.toggleModalHandler}/>
 
       {/* <ButtonWrapper>
           <GeneralButton onClick={() => this.toggleModalHandler('week')}>
