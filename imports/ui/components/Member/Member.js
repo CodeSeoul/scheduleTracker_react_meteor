@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { FixedColumn, Select, Option } from '../../styles/MemberStyle';
-import { ScheduleContext } from '../Schedule/Schedule';
+import { ScheduleContext } from '../../App';
 
 const Member = props => {
   //I'm going to add 'week' key to the state in App component and pass it to Member component. For now, I'm using week 0(index '0')
