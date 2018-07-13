@@ -13,7 +13,7 @@ class Member extends React.Component {
     Meteor.call('changeSchedule', member, member_id, newStatus, day, week);
   };
   render() {
-    console.log('props, Member', this.props);
+    //console.log('props, Member', this.props);
     //I'm going to add 'week' key to the state in App component and pass it to Member component. For now, I'm using week 0(index '0')
     const {
       info,
@@ -26,7 +26,7 @@ class Member extends React.Component {
     const { schedule, firstName, lastName, section, rank } = info;
     //console.log('schedule', schedule);
     const weeklySchedule = schedule[0].map((dailySchedule, index) => {
-      console.log('dailySchedule', dailySchedule);
+      //console.log('dailySchedule', dailySchedule);
       return (
         <Select
           name="status"

@@ -28,7 +28,7 @@ class App extends Component {
     status: ['Normal', 'Training', 'Weekend OT', 'Business Trip', 'On Leave']
   };
   static getDerivedStateFromProps(nextProps, state) {
-    console.log('nextProps', nextProps);
+    //console.log('nextProps', nextProps);
     return { ...state, employees: nextProps.users };
   }
 
@@ -52,7 +52,7 @@ class App extends Component {
     if (this.state.employees.length < 1) {
       return <p>...Loading</p>;
     }
-    console.log(this.state);
+    //console.log(this.state);
     return (
       <ScheduleContextProvider>
         <div>

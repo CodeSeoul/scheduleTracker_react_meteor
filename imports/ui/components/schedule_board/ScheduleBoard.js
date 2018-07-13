@@ -40,7 +40,7 @@ class ScheduleBoard extends React.Component {
   };
 
   render = () => {
-    console.log('this.props, ScheduleBoard', this.props);
+    //console.log('this.props, ScheduleBoard', this.props);
     const {
       employees,
       days,
