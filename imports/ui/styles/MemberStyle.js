@@ -16,7 +16,7 @@ const Select = styled.select`
 
   ${props => {
     let type = parseInt(props.type);
-    console.log('style props', props);
+    //console.log('style props', props);
     switch (type) {
       case 0:
         return 'background:rgba(195,36,186,0.7);';
