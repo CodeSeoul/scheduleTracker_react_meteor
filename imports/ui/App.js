@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
+import { createContainer, withTracker } from 'meteor/react-meteor-data';
 import Employees from '../api/employees';
 import ScheduleBoard from './components/schedule_board/ScheduleBoard';
 import DashBoard from './components/dashboard/Dashboard';
@@ -28,7 +28,7 @@ class App extends Component {
     status: ['Normal', 'Training', 'Weekend OT', 'Business Trip', 'On Leave']
   };
   static getDerivedStateFromProps(nextProps, state) {
-    //console.log('nextProps', nextProps);
+    console.log('nextProps', nextProps);
     return { ...state, employees: nextProps.users };
   }
 
@@ -72,10 +72,11 @@ class App extends Component {
   }
 }
 
-export default createContainer(() => {
-  Meteor.subscribe('allUsers');
+export default (AppContainer = withTracker(() => {
+  const userHandle = Meteor.subscribe('allUsers');
+  const loading = !userHandle.ready();
   return {
-    ready: Meteor.users.find({}).fetch().length > 0,
+    loading,
     users: Meteor.users.find({}).fetch()
   };
-}, App);
+})(App));

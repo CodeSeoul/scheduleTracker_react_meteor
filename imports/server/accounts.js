@@ -49,7 +49,6 @@ if (Meteor.isServer) {
   Meteor.methods({
     changeSchedule(member, _id, newStatus, day) {
       console.log('method hit!!!!!!!!', member);
-      check(member, Object);
       if (member) {
         Meteor.users.update(
           { _id },

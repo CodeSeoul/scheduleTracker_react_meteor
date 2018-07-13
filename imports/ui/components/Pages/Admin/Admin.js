@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-import { createContainer } from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 class Admin extends React.Component {
   state = {
     errors: []
@@ -107,10 +107,11 @@ class Admin extends React.Component {
   }
 }
 
-export default createContainer(() => {
-  Meteor.subscribe('allUsers');
-
+export default (AdminContainer = withTracker(() => {
+  const userHandle = Meteor.subscribe('allUsers');
+  const loading = !userHandle.ready();
   return {
+    loading,
     users: Meteor.users.find({}).fetch()
   };
-}, Admin);
+})(Admin));
