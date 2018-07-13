@@ -3,13 +3,14 @@ import { FixedColumn, Select, Option } from '../../styles/MemberStyle';
 import { Meteor } from 'meteor/meteor';
 import { ScheduleContext } from '../../App';
 class Member extends React.Component {
-  scheduleChangeHandler = (e, member, member_id, day) => {
-    console.log('e.target.value', e.target.index);
-    console.log('e.target.name', e.target.name);
-    console.log('MEMBER SET', Meteor.userId());
-    console.log('_id', member);
+  scheduleChangeHandler = (e, member, member_id, day, week) => {
+    //console.log('e.target.value', e.target.index);
+    //console.log('e.target.name', e.target.name);
+    //console.log('MEMBER SET', Meteor.userId());
+    //console.log('_id', member);
     let newStatus = e.target.value;
-    Meteor.call('changeSchedule', member, member_id, newStatus, day);
+    console.log(typeof day, 'TYPE!!');
+    Meteor.call('changeSchedule', member, member_id, newStatus, day, week);
   };
   render() {
     console.log('props, Member', this.props);
@@ -23,8 +24,9 @@ class Member extends React.Component {
       scheduleChangeHandler
     } = this.props;
     const { schedule, firstName, lastName, section, rank } = info;
-    console.log('schedule', schedule);
+    //console.log('schedule', schedule);
     const weeklySchedule = schedule[0].map((dailySchedule, index) => {
+      console.log('dailySchedule', dailySchedule);
       return (
         <Select
           name="status"
