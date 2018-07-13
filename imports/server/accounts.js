@@ -13,7 +13,9 @@ Accounts.onCreateUser((options, user) => {
   user.info = {
     rank: 0,
     section: 0,
-    schedule: scheduleArrays()
+    schedule: scheduleArrays(),
+    firstName: options.firstName,
+    lastName: options.lastName
   };
   return user;
 });

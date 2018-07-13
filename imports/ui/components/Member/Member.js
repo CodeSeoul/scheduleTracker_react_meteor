@@ -9,15 +9,13 @@ const Member = props => {
     info,
     _id,
     section,
-    lastName,
-    firstName,
     Rank,
     Section,
     rank,
     status,
     scheduleChangeHandler
   } = props;
-  const { schedule } = info;
+  const { schedule, firstName, lastName } = info;
   const weeklySchedule = schedule[0].map((dailySchedule, index) => {
     return (
       <Select

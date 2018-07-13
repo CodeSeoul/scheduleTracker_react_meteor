@@ -43,7 +43,9 @@ class Admin extends React.Component {
     Accounts.createUser(
       {
         username: this.username.value,
-        password: this.password.value
+        password: this.password.value,
+        lastName: this.lastName.value,
+        firstName: this.firstName.value
       },
       error => {
         if (!error) {
@@ -55,6 +57,8 @@ class Admin extends React.Component {
       }
     );
     this.username.value = '';
+    this.firstName.value = '';
+    this.lastName.value = '';
     this.password.value = '';
     this.confirmPassword.value = '';
   };
@@ -74,6 +78,16 @@ class Admin extends React.Component {
               type="text"
               placeholder="username"
               ref={input => (this.username = input)}
+            />
+            <input
+              type="text"
+              placeholder="Last name"
+              ref={input => (this.lastName = input)}
+            />
+            <input
+              type="text"
+              placeholder="First name"
+              ref={input => (this.firstName = input)}
             />
             <input
               type="password"

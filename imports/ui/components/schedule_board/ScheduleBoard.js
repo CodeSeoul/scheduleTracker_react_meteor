@@ -6,9 +6,10 @@ import { ScheduleContainer, Tablehead } from '../../styles/ScheduleBoardStyle';
 const sortEmployees = (employees, key, order) => {
   employees.sort((a, b) => {
     if (key == 'name')
-      return a['firstName'].localeCompare(b['firstName']) * order;
-    else if (key == 'section') return (a['section'] - b['section']) * order;
-    else return (a['rank'] - b['rank']) * order;
+      return a.info['firstName'].localeCompare(b.info['firstName']) * order;
+    else if (key == 'section')
+      return (a.info['section'] - b.info['section']) * order;
+    else return (a.info['rank'] - b.info['rank']) * order;
   });
 };
 
