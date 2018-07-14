@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
+import { createContainer, withTracker } from 'meteor/react-meteor-data';
 import Employees from '../api/employees';
 import ScheduleBoard from './components/schedule_board/ScheduleBoard';
 import DashBoard from './components/dashboard/Dashboard';
@@ -27,7 +28,8 @@ class App extends Component {
     status: ['Normal', 'Training', 'Weekend OT', 'Business Trip', 'On Leave']
   };
   static getDerivedStateFromProps(nextProps, state) {
-    return { ...state, employees: nextProps.employees };
+    console.log('nextProps', nextProps);
+    return { ...state, employees: nextProps.users };
   }
 
   ScheduleChangeHandler = (event, id, day) => {
@@ -35,7 +37,9 @@ class App extends Component {
     const newEmployees = [...this.state.employees];
     newEmployees.forEach((employee, index) => {
       id === employee._id
-        ? (newEmployees[index].schedule[0][day] = Number(event.target.value))
+        ? (newEmployees[index].info.schedule[0][day] = Number(
+            event.target.value
+          ))
         : null;
     });
     this.setState({
@@ -44,27 +48,11 @@ class App extends Component {
   };
 
   render() {
-    while (this.state.employees.length === 0) {
-      return null;
-    }
-    ////////////////////////////////////////////////////////////
-    //This is how data for employees could be pulled
-    let employee1 = this.state.employees[0];
-    let employee1_rank = this.state.rank[employee1.rank];
-    let employee1_section = this.state.section[employee1.section];
-    //console.log('employee1', employee1);
-    //console.log('employee1_rank', employee1_rank);
-    //console.log('employee1_section', employee1_section);
-
-    let employee1_week1 = employee1.schedule[0];
-    let employee1_week1_Mon = employee1_week1[0];
-    //console.log('employee1_week1', employee1_week1);
-    // console.log(
-    //   'employee1_week1_Mon_status',
-    //   this.state.status[employee1_week1_Mon]
-    // );
-
     ///////////////////////////////////////////////////////////
+    if (this.state.employees.length < 1) {
+      return <p>...Loading</p>;
+    }
+    //console.log(this.state);
     return (
       <ScheduleContextProvider>
         <div>
@@ -74,9 +62,7 @@ class App extends Component {
           <div>
             <DashBoard />
             <ScheduleBoard
-              ScheduleChangeHandler={(event, id, day) =>
-                this.ScheduleChangeHandler(event, id, day)
-              }
+              scheduleChangeHandler={this.ScheduleChangeHandler}
               {...this.state}
             />
           </div>
@@ -86,7 +72,11 @@ class App extends Component {
   }
 }
 
-export default createContainer(() => {
-  Meteor.subscribe('employees');
-  return { employees: Employees.find({}).fetch() };
-}, App);
+export default (AppContainer = withTracker(() => {
+  const userHandle = Meteor.subscribe('allUsers');
+  const loading = !userHandle.ready();
+  return {
+    loading,
+    users: Meteor.users.find({}).fetch()
+  };
+})(App));

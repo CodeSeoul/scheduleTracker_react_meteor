@@ -5,34 +5,33 @@ const FixedColumn = styled.div`
   height: 100%;
   display: grid;
   justify-items: center;
-  text-align : center;
+  text-align: center;
   align-items: center;
   border: 0.05rem #ccc solid;
 `;
-
 
 const Select = styled.select`
   width: 100%;
   height: 100%;
 
   ${props => {
-    switch (props.type) {
+    let type = parseInt(props.type);
+    //console.log('style props', props);
+    switch (type) {
       case 0:
-        return 'background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(195,36,186,0.7));';
+        return 'background:rgba(195,36,186,0.7);';
       case 1:
-        return 'background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(210,13,13,0.7));';
+        return 'background:rgba(210,13,13,0.7);';
       case 2:
-        return 'background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(35,183,255,0.7));';
+        return 'background:rgba(35,183,255,0.7);';
       case 3:
-        return 'background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(21,110,23,0.7));';
+        return 'background:rgba(21,110,23,0.7);';
       case 4:
-        return 'background:linear-gradient(rgba(255,255,255,100%),rgba(255,255,255,100%) 20%, rgba(255,163,13,0.7));';
+        return 'background:rgba(255,163,13,0.7);';
     }
   }};
 `;
 
-const Option = styled.option`
-
-`
+const Option = styled.option``;
 
 export { Select, Option, FixedColumn };
