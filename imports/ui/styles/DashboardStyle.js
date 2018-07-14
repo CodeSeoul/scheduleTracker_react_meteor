@@ -1,35 +1,34 @@
 import styled from 'styled-components'
-import * as variables from '../../styles/variables'
 
-const Navbar = styled.div`
+const DashboardWrapper= styled.div`
+    width: 100%;
+    height:auto;
+    position:fixed;
+    top:0;
+    left:0;
+    text-align: justify; 
+    background: linear-gradient(
+    to bottom,
+    rgba(20, 33, 61, 1),
+    rgba(41, 53, 78, 0.95)
+  );
+`;
 
-display : grid;
-grid-template-columns : 1fr 10rem 1fr;
-justify-items : center;
-align-items : center;
-border-bottom : ${variables.PrimaryColor} 0.5rem solid;
 
-div{
-    justify-self : start;
-}
-
-nav{
-    justify-self : end;
+const Header = styled.div`
+  font-size: 40px;
+  width:auto;
+  height:auto;
+  color: #ffffff;
+  float:left;
+  font-family: 'Galada', cursive;
+  margin-left:25px;
+  margin-top:10px;
+  padding:0;
+  &:hover{
+    color: #fca311;
   }
-  
-  nav ul{
-    display : grid;
-    grid-template-columns : repeat(3,minmax(100px,1fr));
-    justify-items: center;
-  }
-  li{
-    list-style :none;
-  }
-  a{
-    text-decoration : none;
-    color : black;
-  }
+`;
 
-`
 
-export default Navbar;
+export {Header, DashboardWrapper};
