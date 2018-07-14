@@ -1,13 +1,6 @@
 import React from 'react';
 import {Nav, NavMenu, NavMenuItem, NavSubMenu, NavSubMenuItem} from '../../styles/NavbarStyle';
 
-const weekOfTheYear = ()=>{
-    let now = new Date();
-    let onejan = new Date(now.getFullYear(), 0, 1);
-    week = Math.ceil( (((now - onejan) / 86400000) + onejan.getDay() + 1) / 7 );
-    return week;
-}
-
 const SubMenu = ({handleWeekSelect}) =>{
     let weeks = Array.from(new Array(52),(val,index)=>index+1);
     const NavSubMenuItems = weeks.map((week) =>
@@ -20,13 +13,10 @@ const SubMenu = ({handleWeekSelect}) =>{
     );
 };
 class Navbar extends React.Component{
-    constructor(props){
-        super(props);
-        this.state= {
+    state= {
             showItem: false,
-            week: weekOfTheYear()
-        };
-    }
+            week: this.props.week
+    };
     
     handleHover = ()=>{
         this.setState({showItem: true});
@@ -37,7 +27,8 @@ class Navbar extends React.Component{
     };
 
     handleWeekSelect = (selected) =>{
-        this.setState({week: selected})
+        this.setState({week: selected});
+        this.props.handleWeekChange(selected);
     }
     
     render(){
