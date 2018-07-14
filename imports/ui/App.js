@@ -49,7 +49,7 @@ class App extends Component {
 
   render() {
     ///////////////////////////////////////////////////////////
-    if (this.state.employees.length < 1) {
+    if (this.props.loading) {
       return <p>...Loading</p>;
     }
     //console.log(this.state);
@@ -75,6 +75,7 @@ class App extends Component {
 export default (AppContainer = withTracker(() => {
   const userHandle = Meteor.subscribe('allUsers');
   const loading = !userHandle.ready();
+  console.log('loading', loading);
   return {
     loading,
     users: Meteor.users.find({}).fetch()
