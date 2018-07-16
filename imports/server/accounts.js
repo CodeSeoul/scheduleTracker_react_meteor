@@ -36,14 +36,14 @@ if (Meteor.isServer) {
   });
 
   Meteor.methods({
-    changeSchedule(member, _id, newStatus, day) {
-      console.log('method hit!!!!!!!!', member);
+    changeSchedule(member, _id, newStatus, day, week) {
+      // console.log('method hit!!!!!!!!', member);
       if (member) {
         Meteor.users.update(
           { _id },
           {
             $set: {
-              ['info.schedule.0.' + day]: newStatus
+              ['info.schedule.' + week + '.' + day]: newStatus
             }
           }
         );

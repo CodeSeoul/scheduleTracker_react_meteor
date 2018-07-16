@@ -45,17 +45,10 @@ class ScheduleBoard extends React.Component {
 
   render = () => {
     //console.log('this.props, ScheduleBoard', this.props);
-    const {
-      employees,
-      days,
-      rank,
-      section,
-      scheduleChangeHandler
-    } = this.props;
+    const { employees, days, rank, section } = this.props;
 
     const members = employees.map(employee => (
       <Member
-        scheduleChangeHandler={scheduleChangeHandler}
         Section={section}
         Rank={rank}
         {...this.props}
