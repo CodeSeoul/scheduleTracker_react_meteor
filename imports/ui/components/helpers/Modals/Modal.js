@@ -1,6 +1,5 @@
 import React from 'react';
 import DashboardModal from './DashboardModal';
-import LoginModal from './LoginModal';
 import WeekModal from './WeekModal';
 
 const Modal = props => {
@@ -12,8 +11,6 @@ const Modal = props => {
         return <WeekModal />;
       case 'dashboard':
         return <DashboardModal />;
-      case 'login':
-        return <LoginModal {...props} />;
       default:
         return null;
     }

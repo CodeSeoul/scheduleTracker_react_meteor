@@ -1,6 +1,6 @@
 import React from 'react';
 
-class LoginModal extends React.Component {
+class LoginForm extends React.Component {
   state = {
     errors: [],
     username: '',
@@ -14,24 +14,42 @@ class LoginModal extends React.Component {
     });
   };
   login = e => {
+    let errors = [];
+    this.setState({
+      errors: []
+    });
     e.preventDefault();
-    e.stopPropagation();
     Meteor.loginWithPassword(
       this.state.username,
       this.password.value,
       error => {
-        if (error) {
-          console.log('login error:', error);
+        if (!error) {
+          this.setState({
+            errors: [],
+            hasError: false
+          });
+        } else {
+          this.setState({
+            errors: [...this.state.errors, error],
+            hasError: true
+          });
         }
       }
     );
-    this.props.toggleModalHandler();
   };
+
+  errorHandler = errors => {
+    return errors.map((error, i) => <p key={i}>{error.message}</p>);
+  };
+
   render() {
-    console.log('this.props', this.props);
+    //console.log('this.props', this.props);
+    let showErrors = this.state.hasError
+      ? this.errorHandler(this.state.errors)
+      : null;
     return (
       <div>
-        <h1>Log In</h1>
+        {showErrors}
         <form>
           <div>
             <input
@@ -56,4 +74,4 @@ class LoginModal extends React.Component {
   }
 }
 
-export default LoginModal;
+export default LoginForm;

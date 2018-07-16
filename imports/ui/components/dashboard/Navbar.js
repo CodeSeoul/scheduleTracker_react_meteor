@@ -37,7 +37,9 @@ class Navbar extends React.Component {
     this.setState({ week: selected, showItem: false });
     this.props.handleWeekChange(selected);
   };
-
+  handleLogout() {
+    Meteor.logout();
+  }
   render() {
     return (
       <Nav>
@@ -55,9 +57,7 @@ class Navbar extends React.Component {
             </a>
           </NavMenuItem>
 
-          <NavMenuItem>
-            <a onClick={() => this.props.toggleModalHandler('login')}>Log in</a>
-          </NavMenuItem>
+          <NavMenuItem onClick={this.handleLogout}>Log Out</NavMenuItem>
 
           <NavMenuItem>
             <Link to="/admin">Admin</Link>
