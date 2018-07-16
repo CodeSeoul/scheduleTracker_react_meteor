@@ -21,12 +21,13 @@ class Member extends React.Component {
       Rank,
       Section,
       status,
+      week,
       scheduleChangeHandler
     } = this.props;
     const { schedule, firstName, lastName, section, rank } = info;
     //console.log('schedule', schedule);
-    const weeklySchedule = schedule[0].map((dailySchedule, index) => {
-      //console.log('dailySchedule', dailySchedule);
+    const weeklySchedule = schedule[week - 1].map((dailySchedule, index) => {
+      //console.log('week', week);
       return (
         <Select
           name="status"

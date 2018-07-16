@@ -25,7 +25,11 @@ class ScheduleBoard extends React.Component {
     let nextEmployees = nextProps.employees;
     if (state.employees != nextEmployees)
       sortEmployees(nextEmployees, state.sort.key, state.sort.order);
-    return { employees: nextEmployees, days: nextProps.days };
+    return {
+      employees: nextEmployees,
+      days: nextProps.days,
+      week: nextProps.week
+    };
   }
 
   handleSort = event => {
