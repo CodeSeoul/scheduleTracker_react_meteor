@@ -7,6 +7,7 @@ import {
   NavSubMenuItem
 } from '../../styles/NavbarStyle';
 import { Link, withRouter } from 'react-router-dom';
+import IsAdmin from '../helpers/IsAdmin';
 
 const SubMenu = ({ handleWeekSelect }) => {
   let weeks = Array.from(new Array(52), (val, index) => index + 1);
@@ -37,8 +38,8 @@ class Navbar extends React.Component {
     this.props.handleWeekChange(selected);
   };
   handleLogout = () => {
-    Meteor.logout();
     this.props.history.push('/login');
+    Meteor.logout();
   };
   render() {
     //console.log('this.props, navBar', this.props);
@@ -60,9 +61,11 @@ class Navbar extends React.Component {
 
           <NavMenuItem onClick={this.handleLogout}>Log Out</NavMenuItem>
 
-          <NavMenuItem>
-            <Link to="/admin">Admin</Link>
-          </NavMenuItem>
+          <IsAdmin>
+            <NavMenuItem>
+              <Link to="/admin">Admin</Link>
+            </NavMenuItem>
+          </IsAdmin>
         </NavMenu>
       </Nav>
     );
