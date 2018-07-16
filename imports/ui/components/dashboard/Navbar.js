@@ -7,12 +7,6 @@ import {
   NavSubMenuItem
 } from '../../styles/NavbarStyle';
 import { Link } from 'react-router-dom';
-const weekOfTheYear = () => {
-  let now = new Date();
-  let onejan = new Date(now.getFullYear(), 0, 1);
-  week = Math.ceil(((now - onejan) / 86400000 + onejan.getDay() + 1) / 7);
-  return week;
-};
 
 const SubMenu = ({ handleWeekSelect }) => {
   let weeks = Array.from(new Array(52), (val, index) => index + 1);
@@ -27,24 +21,21 @@ const SubMenu = ({ handleWeekSelect }) => {
   return <NavSubMenu>{NavSubMenuItems}</NavSubMenu>;
 };
 class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showItem: false,
-      week: weekOfTheYear()
-    };
-  }
+  state = {
+    showItem: false,
+    week: this.props.week
+  };
 
   handleHover = () => {
     this.setState({ showItem: true });
   };
-
   handleLeave = () => {
     this.setState({ showItem: false });
   };
 
   handleWeekSelect = selected => {
-    this.setState({ week: selected });
+    this.setState({ week: selected, showItem: false });
+    this.props.handleWeekChange(selected);
   };
 
   render() {
@@ -52,12 +43,7 @@ class Navbar extends React.Component {
       <Nav>
         <NavMenu>
           <NavMenuItem onMouseLeave={this.handleLeave}>
-            <a
-              onMouseEnter={this.handleHover}
-              onClick={() => this.props.toggleModalHandler('week')}
-            >
-              Week {this.state.week}
-            </a>
+            <a onMouseEnter={this.handleHover}>Week {this.state.week}</a>
             {this.state.showItem && (
               <SubMenu handleWeekSelect={this.handleWeekSelect} />
             )}
