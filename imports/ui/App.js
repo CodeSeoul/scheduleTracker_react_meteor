@@ -4,6 +4,7 @@ import { createContainer, withTracker } from 'meteor/react-meteor-data';
 import Employees from '../api/employees';
 import ScheduleBoard from './components/schedule_board/ScheduleBoard';
 import DashBoard from './components/dashboard/Dashboard';
+import weekOfTheYear from '../api/weekOfTheYear';
 // Context API
 
 export const ScheduleContext = React.createContext();
@@ -25,7 +26,8 @@ class App extends Component {
     days: ['mon', 'tues', 'wed', 'thur', 'fri', 'sat', 'sun'],
     section: ['iOS', 'android', 'frontend', 'backend'],
     rank: ['Manager', 'Senior', 'Junior', 'Intern'],
-    status: ['Normal', 'Training', 'Weekend OT', 'Business Trip', 'On Leave']
+    status: ['Normal', 'Training', 'Weekend OT', 'Business Trip', 'On Leave'],
+    week: weekOfTheYear()
   };
   static getDerivedStateFromProps(nextProps, state) {
     console.log('nextProps', nextProps);
@@ -47,12 +49,21 @@ class App extends Component {
     });
   };
 
+  handleWeekChange = selected_week =>{
+    event.preventDefault();
+    this.setState({
+      week : selected_week
+    })
+  }
+
+
   render() {
     ///////////////////////////////////////////////////////////
     if (this.props.loading) {
       return <p>...Loading</p>;
     }
     //console.log(this.state);
+    //console.log(this.state.week);
     return (
       <ScheduleContextProvider>
         <div>
@@ -60,7 +71,8 @@ class App extends Component {
             <h1>Schedule Tracker</h1>
           </header>
           <div>
-            <DashBoard />
+            <DashBoard week={this.state.week} handleWeekChange={this.handleWeekChange}/>
+
             <ScheduleBoard
               scheduleChangeHandler={this.ScheduleChangeHandler}
               {...this.state}
