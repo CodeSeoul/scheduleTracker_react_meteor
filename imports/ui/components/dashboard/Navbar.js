@@ -6,7 +6,7 @@ import {
   NavSubMenu,
   NavSubMenuItem
 } from '../../styles/NavbarStyle';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 const SubMenu = ({ handleWeekSelect }) => {
   let weeks = Array.from(new Array(52), (val, index) => index + 1);
@@ -25,7 +25,6 @@ class Navbar extends React.Component {
     showItem: false,
     week: this.props.week
   };
-
   handleHover = () => {
     this.setState({ showItem: true });
   };
@@ -37,10 +36,12 @@ class Navbar extends React.Component {
     this.setState({ week: selected, showItem: false });
     this.props.handleWeekChange(selected);
   };
-  handleLogout() {
+  handleLogout = () => {
     Meteor.logout();
-  }
+    this.props.history.push('/login');
+  };
   render() {
+    //console.log('this.props, navBar', this.props);
     return (
       <Nav>
         <NavMenu>
@@ -68,4 +69,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);
