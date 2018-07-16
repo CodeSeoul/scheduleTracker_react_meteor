@@ -5,7 +5,8 @@ import { ScheduleContainer, Tablehead } from '../../styles/ScheduleBoardStyle';
 
 const sortEmployees = (employees, key, order) => {
   employees.sort((a, b) => {
-    if (key == 'name')
+    if (!a.info['firstName'] || b.info['firstName']) return 1;
+    else if (key == 'name')
       return a.info['firstName'].localeCompare(b.info['firstName']) * order;
     else if (key == 'section')
       return (a.info['section'] - b.info['section']) * order;
