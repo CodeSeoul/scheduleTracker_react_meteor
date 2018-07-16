@@ -1,6 +1,15 @@
 Accounts.onCreateUser((options, user) => {
-  console.log('options', options);
-  console.log('user', user);
+  //console.log('options', options);
+  //console.log('user', user);
+
+  //adds admin role if user is in Admin list under settings.json
+  // console.log(
+  //   'Meteor.settings.admins',
+  //   Meteor.settings.admins.indexOf(options.username)
+  // );
+  if (Meteor.settings.admins.indexOf(options.username) > -1) {
+    user.roles = 'admin';
+  }
 
   const scheduleArrays = () => {
     let schedule = [];
@@ -29,6 +38,7 @@ if (Meteor.isServer) {
       {},
       {
         fields: {
+          role: 1,
           info: 1
         }
       }
