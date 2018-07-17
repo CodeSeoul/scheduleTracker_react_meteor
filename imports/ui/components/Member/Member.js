@@ -8,6 +8,10 @@ class Member extends React.Component {
     let newStatus = e.target.value;
     Meteor.call('changeSchedule', member, member_id, newStatus, day, weekIndex);
   };
+
+  deleteHandler = (e,id)=>{
+    // delete user on the server
+  }
   render() {
     const { info, _id, Rank, Section, status, week } = this.props;
     const { schedule, firstName, lastName, section, rank } = info;
@@ -42,7 +46,7 @@ class Member extends React.Component {
               <FixedColumn>{`${firstName} ${lastName}`}</FixedColumn>
               <FixedColumn>{Rank[rank]}</FixedColumn>
               {weeklySchedule}
-              <Delete/>
+              <Delete onClick={(e)=>this.deleteHandler(e,_id)}>Button</Delete>
             </Fragment>
           );
         }}
