@@ -19,7 +19,8 @@ class ScheduleBoard extends React.Component {
     sort: {
       key: 'name',
       order: 1
-    }
+    },
+    searchKey : ''
   };
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -44,6 +45,13 @@ class ScheduleBoard extends React.Component {
     this.setState({ sort: { key, order } });
   };
 
+  searchHandler = e =>{
+    const searchKey = e.target.value;
+    this.setState({
+      searchKey : searchKey
+    })
+  }
+
   render = () => {
     //console.log('this.props, ScheduleBoard', this.props);
     const { employees, days, rank, section } = this.props;
@@ -65,7 +73,7 @@ class ScheduleBoard extends React.Component {
 
     return (
       <React.Fragment>
-        <Search type='text'/>
+        <Search onChange={(e)=>this.searchHandler(e)} type='text'/>
       <ScheduleContainer>
         <Tablehead onClick={this.handleSort} className="section">
           Section

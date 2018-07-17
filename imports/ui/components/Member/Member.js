@@ -11,6 +11,7 @@ class Member extends React.Component {
 
   deleteHandler = (e,id)=>{
     // delete user on the server
+    console.log(id);
   }
   render() {
     const { info, _id, Rank, Section, status, week } = this.props;
