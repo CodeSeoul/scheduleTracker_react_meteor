@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { FixedColumn, Select, Option } from '../../styles/MemberStyle';
+import { FixedColumn, Select, Option, Delete } from '../../styles/MemberStyle';
 import { Meteor } from 'meteor/meteor';
 import { ScheduleContext } from '../../App';
 class Member extends React.Component {
@@ -8,6 +8,11 @@ class Member extends React.Component {
     let newStatus = e.target.value;
     Meteor.call('changeSchedule', member, member_id, newStatus, day, weekIndex);
   };
+
+  deleteHandler = (e,id)=>{
+    // delete user on the server
+    console.log(id);
+  }
   render() {
     const { info, _id, Rank, Section, status, week } = this.props;
     const { schedule, firstName, lastName, section, rank } = info;
@@ -42,6 +47,7 @@ class Member extends React.Component {
               <FixedColumn>{`${firstName} ${lastName}`}</FixedColumn>
               <FixedColumn>{Rank[rank]}</FixedColumn>
               {weeklySchedule}
+              <Delete onClick={(e)=>this.deleteHandler(e,_id)}>Button</Delete>
             </Fragment>
           );
         }}
