@@ -38,7 +38,7 @@ const Select = styled.select`
 
 const Option = styled.option`
 font-family : 'Roboto';
-text-align : center;
+background-color : #fff;
 `;
 
 const Delete = styled.button`
