@@ -1,4 +1,5 @@
 import React from 'react';
+import { LoginFormRoot } from '../../../styles/LoginFormStyle';
 
 class LoginForm extends React.Component {
   state = {
@@ -48,9 +49,11 @@ class LoginForm extends React.Component {
       ? this.errorHandler(this.state.errors)
       : null;
     return (
+      <LoginFormRoot>
+        <form>
       <div>
         {showErrors}
-        <form>
+          </div>
           <div>
             <input
               type="text"
@@ -67,9 +70,11 @@ class LoginForm extends React.Component {
               ref={input => (this.password = input)}
             />
           </div>
+          <div>
           <button onClick={this.login}>Login </button>
+          </div>
         </form>
-      </div>
+      </LoginFormRoot>
     );
   }
 }
