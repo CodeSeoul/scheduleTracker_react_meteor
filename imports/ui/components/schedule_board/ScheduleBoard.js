@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import Member from '../Member/Member';
-import { ScheduleContainer, Tablehead } from '../../styles/ScheduleBoardStyle';
+import { ScheduleContainer, Tablehead, Search, SearchIcon, SearchContainer } from '../../styles/ScheduleBoardStyle';
 
 const sortEmployees = (employees, key, order) => {
   employees.sort((a, b) => {
-    if (key == 'name')
+    if (!a.info['firstName'] || b.info['firstName']) return 1;
+    else if (key == 'name')
       return a.info['firstName'].localeCompare(b.info['firstName']) * order;
     else if (key == 'section')
       return (a.info['section'] - b.info['section']) * order;
@@ -18,14 +19,19 @@ class ScheduleBoard extends React.Component {
     sort: {
       key: 'name',
       order: 1
-    }
+    },
+    searchKey : ''
   };
 
   static getDerivedStateFromProps(nextProps, state) {
     let nextEmployees = nextProps.employees;
     if (state.employees != nextEmployees)
       sortEmployees(nextEmployees, state.sort.key, state.sort.order);
-    return { employees: nextEmployees, days: nextProps.days };
+    return {
+      employees: nextEmployees,
+      days: nextProps.days,
+      week: nextProps.week
+    };
   }
 
   handleSort = event => {
@@ -39,26 +45,37 @@ class ScheduleBoard extends React.Component {
     this.setState({ sort: { key, order } });
   };
 
+  searchHandler = e =>{
+    e.preventDefault();
+    const searchKey = e.target.value;
+    
+    this.setState({
+      searchKey : searchKey
+    })
+
+  }
+
   render = () => {
     //console.log('this.props, ScheduleBoard', this.props);
-    const {
-      employees,
-      days,
-      rank,
-      section,
-      scheduleChangeHandler
-    } = this.props;
+    const { employees, days, rank, section } = this.props;
 
-    const members = employees.map(employee => (
-      <Member
-        scheduleChangeHandler={scheduleChangeHandler}
-        Section={section}
-        Rank={rank}
-        {...this.props}
-        key={employee._id}
-        {...employee}
-      />
-    ));
+    const members = employees.map(employee => {
+
+        if(employee.info.firstName.includes(this.state.searchKey)&&employee.info.lastName.includes(this.state.searchKey)){
+          return(
+          <Member
+          Section={section}
+          Rank={rank}
+          {...this.props}
+          key={employee._id}
+          {...employee}
+          />
+          )
+        }else{
+          return null;
+        }
+
+    });
     const tableheads = days.map((day, index) => (
       <Tablehead key={index}>
         {day.charAt(0).toUpperCase() + day.substr(1)}
@@ -66,6 +83,11 @@ class ScheduleBoard extends React.Component {
     ));
 
     return (
+      <React.Fragment>
+      <SearchContainer>
+        <Search placeholder =' Enter Name' onChange={(e)=>this.searchHandler(e)} type='text'/>
+        <SearchIcon src={'/searchIcon.png'}/>
+      </SearchContainer>
       <ScheduleContainer>
         <Tablehead onClick={this.handleSort} className="section">
           Section
@@ -77,8 +99,10 @@ class ScheduleBoard extends React.Component {
           Rank
         </Tablehead>
         {tableheads}
+        <div>Delete</div>
         {members}
       </ScheduleContainer>
+      </React.Fragment>
     );
   };
 }

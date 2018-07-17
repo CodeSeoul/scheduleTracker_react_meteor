@@ -34,32 +34,16 @@ class App extends Component {
     return { ...state, employees: nextProps.users };
   }
 
-  ScheduleChangeHandler = (event, id, day) => {
+  handleWeekChange = selected_week => {
     event.preventDefault();
-    const newEmployees = [...this.state.employees];
-    newEmployees.forEach((employee, index) => {
-      id === employee._id
-        ? (newEmployees[index].info.schedule[0][day] = Number(
-            event.target.value
-          ))
-        : null;
-    });
     this.setState({
-      employees: newEmployees
+      week: selected_week
     });
   };
 
-  handleWeekChange = selected_week =>{
-    event.preventDefault();
-    this.setState({
-      week : selected_week
-    })
-  }
-
-
   render() {
     ///////////////////////////////////////////////////////////
-    if (this.state.employees.length < 1) {
+    if (this.props.loading) {
       return <p>...Loading</p>;
     }
     //console.log(this.state);
@@ -71,12 +55,12 @@ class App extends Component {
             <h1>Schedule Tracker</h1>
           </header>
           <div>
-            <DashBoard week={this.state.week} handleWeekChange={this.handleWeekChange}/>
-
-            <ScheduleBoard
-              scheduleChangeHandler={this.ScheduleChangeHandler}
-              {...this.state}
+            <DashBoard
+              week={this.state.week}
+              handleWeekChange={this.handleWeekChange}
             />
+
+            <ScheduleBoard {...this.state} />
           </div>
         </div>
       </ScheduleContextProvider>
@@ -87,6 +71,7 @@ class App extends Component {
 export default (AppContainer = withTracker(() => {
   const userHandle = Meteor.subscribe('allUsers');
   const loading = !userHandle.ready();
+  console.log('loading', loading);
   return {
     loading,
     users: Meteor.users.find({}).fetch()

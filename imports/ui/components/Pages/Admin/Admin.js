@@ -63,7 +63,7 @@ class Admin extends React.Component {
     this.confirmPassword.value = '';
   };
   render() {
-    console.log('this.props', this.props);
+    //console.log('this.props', this.props);
     return (
       <div>
         <h2>Admininistrator</h2>
