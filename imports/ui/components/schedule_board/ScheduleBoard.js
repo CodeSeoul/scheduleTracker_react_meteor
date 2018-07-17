@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import Member from '../Member/Member';
-import { ScheduleContainer, Tablehead } from '../../styles/ScheduleBoardStyle';
+import { ScheduleContainer, Tablehead, Search } from '../../styles/ScheduleBoardStyle';
 
 const sortEmployees = (employees, key, order) => {
   employees.sort((a, b) => {
-    if (key == 'name')
+    if (!a.info['firstName'] || b.info['firstName']) return 1;
+    else if (key == 'name')
       return a.info['firstName'].localeCompare(b.info['firstName']) * order;
     else if (key == 'section')
       return (a.info['section'] - b.info['section']) * order;
@@ -25,7 +26,11 @@ class ScheduleBoard extends React.Component {
     let nextEmployees = nextProps.employees;
     if (state.employees != nextEmployees)
       sortEmployees(nextEmployees, state.sort.key, state.sort.order);
-    return { employees: nextEmployees, days: nextProps.days };
+    return {
+      employees: nextEmployees,
+      days: nextProps.days,
+      week: nextProps.week
+    };
   }
 
   handleSort = event => {
@@ -41,17 +46,10 @@ class ScheduleBoard extends React.Component {
 
   render = () => {
     //console.log('this.props, ScheduleBoard', this.props);
-    const {
-      employees,
-      days,
-      rank,
-      section,
-      scheduleChangeHandler
-    } = this.props;
+    const { employees, days, rank, section } = this.props;
 
     const members = employees.map(employee => (
       <Member
-        scheduleChangeHandler={scheduleChangeHandler}
         Section={section}
         Rank={rank}
         {...this.props}
@@ -66,6 +64,8 @@ class ScheduleBoard extends React.Component {
     ));
 
     return (
+      <React.Fragment>
+        <Search type='text'/>
       <ScheduleContainer>
         <Tablehead onClick={this.handleSort} className="section">
           Section
@@ -80,6 +80,7 @@ class ScheduleBoard extends React.Component {
         <div>Delete</div>
         {members}
       </ScheduleContainer>
+      </React.Fragment>
     );
   };
 }

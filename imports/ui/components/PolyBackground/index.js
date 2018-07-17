@@ -8,7 +8,7 @@ const ContainerDiv = styled.div`
 
 const Background = styled.img`
   width: 100%;
-  filter: blur(${props => props['data-blur']? '20' : '1'}px);
+  filter: blur(${props => (props['data-blur'] ? '20' : '1')}px);
   overflow: hidden;
   transform: scale(1.1);
   pointer-events: none;
@@ -16,20 +16,24 @@ const Background = styled.img`
   transition: all 0.8s;
 `;
 
-class PolyBackground extends React.Component{
-  state={
+class PolyBackground extends React.Component {
+  state = {
     blur: true
-  }
-  
-  render(){
+  };
+
+  render() {
     // The background image must be in /public folder. see https://guide.meteor.com/structure.html.
-    const ret = <ContainerDiv><Background data-blur={this.state.blur} src={'/background.png'}/></ContainerDiv>;
+    const ret = (
+      <ContainerDiv>
+        <Background data-blur={this.state.blur} src={'/background.png'} />
+      </ContainerDiv>
+    );
     return ret;
   }
-
-  componentDidMount(){
-      setTimeout(()=>{ this.setState({blur: false}); }, 1000);
-  }
+  //causing an error when logging out
+  // componentDidMount(){
+  //     setTimeout(()=>{ this.setState({blur: false}); }, 1000);
+  // }
 }
 
 export default PolyBackground;

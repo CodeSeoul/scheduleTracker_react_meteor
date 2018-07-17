@@ -8,9 +8,16 @@ justify-items : center;
 align-items : center;
 background-color : #eee;
 grid-auto-rows : minmax(50px, auto);
-margin : 3rem 1rem;
+margin : 1rem;
+`
+
+const Search = styled.input`
+width : 15rem;
+height : 1.5rem;
+margin : 2rem 0 0.01rem 1rem;
+
 `
 
 const Tablehead = styled.div`
 `
-export {ScheduleContainer,Tablehead}
+export { ScheduleContainer, Tablehead, Search }

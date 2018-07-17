@@ -5,7 +5,6 @@ import Navbar from './Navbar';
 import { Header, DashboardWrapper } from '../../styles/DashboardStyle';
 
 class Dashboard extends React.Component {
-  
   state = {
     showModal: false,
     modal: ''
@@ -27,12 +26,13 @@ class Dashboard extends React.Component {
           modal={this.state.modal}
         />
 
-        <Header>
-          Schedule Tracker
-        </Header>
-      
-        <Navbar toggleModalHandler={this.toggleModalHandler} week={this.props.week} handleWeekChange={this.props.handleWeekChange}/>
+        <Header>Schedule Tracker</Header>
 
+        <Navbar
+          toggleModalHandler={this.toggleModalHandler}
+          week={this.props.week}
+          handleWeekChange={this.props.handleWeekChange}
+        />
       </DashboardWrapper>
     );
   }
