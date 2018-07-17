@@ -99,7 +99,7 @@ class ScheduleBoard extends React.Component {
           Rank
         </Tablehead>
         {tableheads}
-        <div>Delete</div>
+        <Tablehead>Delete</Tablehead>
         {members}
       </ScheduleContainer>
       </React.Fragment>

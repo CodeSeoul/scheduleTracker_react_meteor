@@ -9,6 +9,10 @@ align-items : center;
 background-color : #eee;
 grid-auto-rows : minmax(50px, auto);
 margin : 1rem;
+font-family : 'Roboto';
+>*{
+    font-size : 1rem !important;
+}
 `
 
 const Search = styled.input`
@@ -36,5 +40,6 @@ margin : 2rem 0 1rem 1rem;
 `
 
 const Tablehead = styled.div`
+font-weight : 700;
 `
 export { ScheduleContainer, Tablehead, Search, SearchIcon, SearchContainer }
