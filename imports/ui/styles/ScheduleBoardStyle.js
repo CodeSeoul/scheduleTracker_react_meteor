@@ -12,12 +12,29 @@ margin : 1rem;
 `
 
 const Search = styled.input`
-width : 15rem;
-height : 1.5rem;
-margin : 2rem 0 0.01rem 1rem;
+margin : 0;
+height : 100%;
+box-sizing : border-box;
+`
 
+const SearchIcon = styled.img`
+margin-left : 0.2rem;
+margin-top : 0.1rem;
+height : 100%;
+display : block;
+`
+
+const SearchContainer = styled.div`
+display : grid;
+grid-template-columns : 4fr 1fr;
+justify-content: stretch;
+align-content : stretch;
+align-items : center;
+height : 2rem;
+width : 40%;
+margin : 2rem 0 1rem 1rem;
 `
 
 const Tablehead = styled.div`
 `
-export { ScheduleContainer, Tablehead, Search }
+export { ScheduleContainer, Tablehead, Search, SearchIcon, SearchContainer }

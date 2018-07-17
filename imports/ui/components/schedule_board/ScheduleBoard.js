@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Member from '../Member/Member';
-import { ScheduleContainer, Tablehead, Search } from '../../styles/ScheduleBoardStyle';
+import { ScheduleContainer, Tablehead, Search, SearchIcon, SearchContainer } from '../../styles/ScheduleBoardStyle';
 
 const sortEmployees = (employees, key, order) => {
   employees.sort((a, b) => {
@@ -84,7 +84,10 @@ class ScheduleBoard extends React.Component {
 
     return (
       <React.Fragment>
-        <Search onChange={(e)=>this.searchHandler(e)} type='text'/>
+      <SearchContainer>
+        <Search placeholder =' Enter Name' onChange={(e)=>this.searchHandler(e)} type='text'/>
+        <SearchIcon src={'/searchIcon.png'}/>
+      </SearchContainer>
       <ScheduleContainer>
         <Tablehead onClick={this.handleSort} className="section">
           Section
