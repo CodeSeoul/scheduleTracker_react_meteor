@@ -13,4 +13,22 @@ const LoginPageBackground= styled.div`
   );
 `;
 
-export { LoginPageBackground };
+const LoginPageTitle = styled.div`
+
+  justify-content: center;
+  display: flex;
+  align-items: center;
+
+  font-size: 46px;
+  width:100%;
+  height:25%;
+  color: #ffffff;
+  font-family: 'Galada', cursive;
+  padding:0;
+  user-select:none;
+  &:hover{
+    color: #fca311;
+  }
+`;
+
+export { LoginPageBackground, LoginPageTitle }

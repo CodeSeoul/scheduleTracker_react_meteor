@@ -2,14 +2,16 @@ import React from 'react';
 import { Redirect } from 'react-router';
 import Login from './LoginForm';
 import LoginForm from './LoginForm';
-import { LoginPageBackground } from '../../../styles/LoginPageStyle';
+import { LoginPageBackground, LoginPageTitle } from '../../../styles/LoginPageStyle';
 
 const LoginPage = () => {
   const redirectUser = Meteor.userId() ? <Redirect to="/" /> : null;
   return (
     <div>
       <LoginPageBackground>
+        <LoginPageTitle>
           Schedule Tracker
+        </LoginPageTitle>
         <LoginForm />
         {redirectUser}
       </LoginPageBackground>
