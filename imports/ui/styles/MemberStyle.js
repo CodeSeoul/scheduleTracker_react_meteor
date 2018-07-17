@@ -34,7 +34,10 @@ const Select = styled.select`
 
 const Option = styled.option``;
 
-const Delete = styled.button``;
+const Delete = styled.button`
+border :none;
+background : none;
+`;
 
 const DeleteIcon = styled.img`
 width : 1.5rem;
