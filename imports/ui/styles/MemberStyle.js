@@ -41,6 +41,9 @@ background : none;
 
 const DeleteIcon = styled.img`
 width : 1.5rem;
+ :hover{
+   transform : scale(1.1,1.1);
+ }
 `
 
 export { Select, Option, FixedColumn, Delete, DeleteIcon };
