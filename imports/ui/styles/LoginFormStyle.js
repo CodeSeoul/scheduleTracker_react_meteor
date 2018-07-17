@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+const LoginFormContainer = styled.form`
+margin:auto;
+flex:1;
+`
+
 const LoginFormRoot = styled.div`
 width: 30%;
 margin: auto;
@@ -10,4 +15,4 @@ box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 display: flex;
 `
 
-export { LoginFormRoot };
+export { LoginFormRoot, LoginFormContainer };
