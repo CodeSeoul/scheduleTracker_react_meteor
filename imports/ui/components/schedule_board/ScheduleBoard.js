@@ -20,7 +20,7 @@ class ScheduleBoard extends React.Component {
       key: 'name',
       order: 1
     },
-    searchKey : 'a'
+    searchKey : ''
   };
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -52,6 +52,7 @@ class ScheduleBoard extends React.Component {
     this.setState({
       searchKey : searchKey
     })
+
   }
 
   render = () => {
