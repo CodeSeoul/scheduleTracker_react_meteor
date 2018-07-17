@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoginFormRoot, LoginFormContainer } from '../../../styles/LoginFormStyle';
+import { LoginFormRoot, LoginFormContainer, LoginInputContainer, LoginInput, LoginSubmitButton } from '../../../styles/LoginFormStyle';
 
 class LoginForm extends React.Component {
   state = {
@@ -51,28 +51,28 @@ class LoginForm extends React.Component {
     return (
       <LoginFormRoot>
         <LoginFormContainer>
-          <div>
+          <LoginInputContainer>
             {showErrors}
-          </div>
-          <div>
-            <input
+          </LoginInputContainer>
+          <LoginInputContainer>
+            <LoginInput
               type="text"
               placeholder="Your Username"
               name="username"
               onChange={e => this.onChangeHandler(e)}
               value={this.state.username}
             />
-          </div>
-          <div>
-            <input
+          </LoginInputContainer>
+          <LoginInputContainer>
+            <LoginInput
               type="password"
               placeholder="Password"
-              ref={input => (this.password = input)}
+              innerRef={input => (this.password = input)}
             />
-          </div>
-          <div>
-            <button onClick={this.login}>Login </button>
-          </div>
+          </LoginInputContainer>
+          <LoginInputContainer>
+            <LoginSubmitButton onClick={this.login}>Login </LoginSubmitButton>
+          </LoginInputContainer>
         </LoginFormContainer>
       </LoginFormRoot>
     );
