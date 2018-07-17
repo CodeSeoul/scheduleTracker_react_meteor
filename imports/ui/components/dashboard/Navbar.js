@@ -47,7 +47,10 @@ class Navbar extends React.Component {
       <Nav>
         <NavMenu>
           <NavMenuItem onMouseLeave={this.handleLeave}>
-            <a onMouseEnter={this.handleHover}>Week {this.state.week}</a>
+            <a onClick={() => this.props.toggleModalHandler('week')}
+               onMouseEnter={this.handleHover}>
+               Week {this.state.week}
+            </a>
             {this.state.showItem && (
               <SubMenu handleWeekSelect={this.handleWeekSelect} />
             )}

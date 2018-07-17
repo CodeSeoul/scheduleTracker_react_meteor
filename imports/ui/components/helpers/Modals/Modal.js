@@ -3,12 +3,14 @@ import DashboardModal from './DashboardModal';
 import WeekModal from './WeekModal';
 
 const Modal = props => {
-  const { modal } = props;
+  const { modal, handleWeekChange } = props;
   console.log('modal to render:', modal);
+
   let displayModal = () => {
     switch (modal) {
       case 'week':
-        return <WeekModal />;
+        return <WeekModal 
+                 handleWeekChange={handleWeekChange}/>;
       case 'dashboard':
         return <DashboardModal />;
       default:
