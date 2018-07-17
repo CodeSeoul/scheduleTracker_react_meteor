@@ -36,4 +36,8 @@ const Option = styled.option``;
 
 const Delete = styled.button``;
 
-export { Select, Option, FixedColumn, Delete };
+const DeleteIcon = styled.img`
+width : 1.5rem;
+`
+
+export { Select, Option, FixedColumn, Delete, DeleteIcon };
