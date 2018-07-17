@@ -77,6 +77,7 @@ class ScheduleBoard extends React.Component {
           Rank
         </Tablehead>
         {tableheads}
+        <div>Delete</div>
         {members}
       </ScheduleContainer>
     );

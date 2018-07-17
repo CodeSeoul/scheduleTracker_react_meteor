@@ -34,4 +34,6 @@ const Select = styled.select`
 
 const Option = styled.option``;
 
-export { Select, Option, FixedColumn };
+const Delete = styled.button``;
+
+export { Select, Option, FixedColumn, Delete };

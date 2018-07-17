@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { FixedColumn, Select, Option } from '../../styles/MemberStyle';
+import { FixedColumn, Select, Option, Delete } from '../../styles/MemberStyle';
 import { Meteor } from 'meteor/meteor';
 import { ScheduleContext } from '../../App';
 class Member extends React.Component {
@@ -55,6 +55,7 @@ class Member extends React.Component {
               <FixedColumn>{`${firstName} ${lastName}`}</FixedColumn>
               <FixedColumn>{Rank[rank]}</FixedColumn>
               {weeklySchedule}
+              <Delete/>
             </Fragment>
           );
         }}
