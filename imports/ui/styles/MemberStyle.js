@@ -41,8 +41,10 @@ background : none;
 
 const DeleteIcon = styled.img`
 width : 1.5rem;
+filter : invert(70%);
  :hover{
    transform : scale(1.1,1.1);
+   filter : invert(0);
  }
 `
 
