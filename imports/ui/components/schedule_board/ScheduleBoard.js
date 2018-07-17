@@ -20,7 +20,7 @@ class ScheduleBoard extends React.Component {
       key: 'name',
       order: 1
     },
-    searchKey : ''
+    searchKey : 'a'
   };
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -46,7 +46,9 @@ class ScheduleBoard extends React.Component {
   };
 
   searchHandler = e =>{
+    e.preventDefault();
     const searchKey = e.target.value;
+    
     this.setState({
       searchKey : searchKey
     })
@@ -56,15 +58,23 @@ class ScheduleBoard extends React.Component {
     //console.log('this.props, ScheduleBoard', this.props);
     const { employees, days, rank, section } = this.props;
 
-    const members = employees.map(employee => (
-      <Member
-        Section={section}
-        Rank={rank}
-        {...this.props}
-        key={employee._id}
-        {...employee}
-      />
-    ));
+    const members = employees.map(employee => {
+
+        if(employee.info.firstName.includes(this.state.searchKey)&&employee.info.lastName.includes(this.state.searchKey)){
+          return(
+          <Member
+          Section={section}
+          Rank={rank}
+          {...this.props}
+          key={employee._id}
+          {...employee}
+          />
+          )
+        }else{
+          return null;
+        }
+
+    });
     const tableheads = days.map((day, index) => (
       <Tablehead key={index}>
         {day.charAt(0).toUpperCase() + day.substr(1)}
