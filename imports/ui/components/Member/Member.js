@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { FixedColumn, Select, Option, Delete } from '../../styles/MemberStyle';
 import { Meteor } from 'meteor/meteor';
 import { ScheduleContext } from '../../App';
+import IsAdmin from '../helpers/IsAdmin';
 class Member extends React.Component {
   scheduleChangeHandler = (e, member, member_id, day, week) => {
     let weekIndex = week - 1;
@@ -9,10 +10,10 @@ class Member extends React.Component {
     Meteor.call('changeSchedule', member, member_id, newStatus, day, weekIndex);
   };
 
-  deleteHandler = (e,id)=>{
+  deleteHandler = (e, id) => {
     // delete user on the server
     console.log(id);
-  }
+  };
   render() {
     const { info, _id, Rank, Section, status, week } = this.props;
     const { schedule, firstName, lastName, section, rank } = info;
@@ -47,7 +48,11 @@ class Member extends React.Component {
               <FixedColumn>{`${firstName} ${lastName}`}</FixedColumn>
               <FixedColumn>{Rank[rank]}</FixedColumn>
               {weeklySchedule}
-              <Delete onClick={(e)=>this.deleteHandler(e,_id)}>Button</Delete>
+              <IsAdmin>
+                <Delete onClick={e => this.deleteHandler(e, _id)}>
+                  Button
+                </Delete>
+              </IsAdmin>
             </Fragment>
           );
         }}
