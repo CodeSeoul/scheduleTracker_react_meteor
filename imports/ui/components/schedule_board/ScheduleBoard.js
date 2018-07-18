@@ -1,7 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import Member from '../Member/Member';
-import { ScheduleContainer, Tablehead, Search, SearchIcon, SearchContainer } from '../../styles/ScheduleBoardStyle';
+import {
+  ScheduleContainer,
+  Tablehead,
+  Search,
+  SearchIcon,
+  SearchContainer
+} from '../../styles/ScheduleBoardStyle';
+import IsAdmin from '../helpers/IsAdmin';
 
 const sortEmployees = (employees, key, order) => {
   employees.sort((a, b) => {
@@ -20,7 +27,7 @@ class ScheduleBoard extends React.Component {
       key: 'name',
       order: 1
     },
-    searchKey : ''
+    searchKey: ''
   };
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -45,36 +52,36 @@ class ScheduleBoard extends React.Component {
     this.setState({ sort: { key, order } });
   };
 
-  searchHandler = e =>{
+  searchHandler = e => {
     e.preventDefault();
     const searchKey = e.target.value;
-    
-    this.setState({
-      searchKey : searchKey
-    })
 
-  }
+    this.setState({
+      searchKey: searchKey
+    });
+  };
 
   render = () => {
     //console.log('this.props, ScheduleBoard', this.props);
     const { employees, days, rank, section } = this.props;
 
     const members = employees.map(employee => {
-
-        if(employee.info.firstName.includes(this.state.searchKey)&&employee.info.lastName.includes(this.state.searchKey)){
-          return(
+      if (
+        employee.info.firstName.includes(this.state.searchKey) &&
+        employee.info.lastName.includes(this.state.searchKey)
+      ) {
+        return (
           <Member
-          Section={section}
-          Rank={rank}
-          {...this.props}
-          key={employee._id}
-          {...employee}
+            Section={section}
+            Rank={rank}
+            {...this.props}
+            key={employee._id}
+            {...employee}
           />
-          )
-        }else{
-          return null;
-        }
-
+        );
+      } else {
+        return null;
+      }
     });
     const tableheads = days.map((day, index) => (
       <Tablehead key={index}>
@@ -84,24 +91,30 @@ class ScheduleBoard extends React.Component {
 
     return (
       <React.Fragment>
-      <SearchContainer>
-        <Search placeholder =' Enter Name' onChange={(e)=>this.searchHandler(e)} type='text'/>
-        <SearchIcon src={'/searchIcon.png'}/>
-      </SearchContainer>
-      <ScheduleContainer>
-        <Tablehead onClick={this.handleSort} className="section">
-          Section
-        </Tablehead>
-        <Tablehead onClick={this.handleSort} className="name">
-          Name
-        </Tablehead>
-        <Tablehead onClick={this.handleSort} className="rank">
-          Rank
-        </Tablehead>
-        {tableheads}
-        <div>Delete</div>
-        {members}
-      </ScheduleContainer>
+        <SearchContainer>
+          <Search
+            placeholder=" Enter Name"
+            onChange={e => this.searchHandler(e)}
+            type="text"
+          />
+          <SearchIcon src={'/searchIcon.png'} />
+        </SearchContainer>
+        <ScheduleContainer admin={Roles.userIsInRole(Meteor.userId())}>
+          <Tablehead onClick={this.handleSort} className="section">
+            Section
+          </Tablehead>
+          <Tablehead onClick={this.handleSort} className="name">
+            Name
+          </Tablehead>
+          <Tablehead onClick={this.handleSort} className="rank">
+            Rank
+          </Tablehead>
+          {tableheads}
+          <IsAdmin>
+            <div>Delete</div>
+          </IsAdmin>
+          {members}
+        </ScheduleContainer>
       </React.Fragment>
     );
   };
