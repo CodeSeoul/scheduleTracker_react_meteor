@@ -30,7 +30,8 @@ class Navbar extends React.Component {
   //To change the week on navbar when user selects week in calendar
   static getDerivedStateFromProps(nextProps, state) {
     if (nextProps.week != state.week){
-      state.week = nextProps.week;
+      state.week = nextProps.week;    //re-render navbar
+      nextProps.toggleModalHandler(); //close modal
     }
     return null;
   }
