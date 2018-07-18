@@ -19,7 +19,10 @@ Meteor.startup(() => {
       <Switch>
         <Route exact path="/" render={() => <App {...data} />} />
         <Route path="/login" component={LoginPage} />
-        <Route path="/admin" render={() => <Admin {...data} />} />
+        <Route
+          path="/admin"
+          render={() => <Admin section={data.section} rank={data.rank} />}
+        />
       </Switch>
     </Router>,
     document.getElementById('render-target')
