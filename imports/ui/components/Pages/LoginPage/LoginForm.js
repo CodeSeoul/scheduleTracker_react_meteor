@@ -1,4 +1,5 @@
 import React from 'react';
+import { LoginFormRoot, LoginFormContainer, LoginInputContainer, LoginInput, LoginSubmitButton } from '../../../styles/LoginFormStyle';
 
 class LoginForm extends React.Component {
   state = {
@@ -48,28 +49,32 @@ class LoginForm extends React.Component {
       ? this.errorHandler(this.state.errors)
       : null;
     return (
-      <div>
-        {showErrors}
-        <form>
-          <div>
-            <input
+      <LoginFormRoot>
+        <LoginFormContainer>
+          <LoginInputContainer>
+            {showErrors}
+          </LoginInputContainer>
+          <LoginInputContainer>
+            <LoginInput
               type="text"
               placeholder="Your Username"
               name="username"
               onChange={e => this.onChangeHandler(e)}
               value={this.state.username}
             />
-          </div>
-          <div>
-            <input
+          </LoginInputContainer>
+          <LoginInputContainer>
+            <LoginInput
               type="password"
               placeholder="Password"
-              ref={input => (this.password = input)}
+              innerRef={input => (this.password = input)}
             />
-          </div>
-          <button onClick={this.login}>Login </button>
-        </form>
-      </div>
+          </LoginInputContainer>
+          <LoginInputContainer>
+            <LoginSubmitButton onClick={this.login}>Login </LoginSubmitButton>
+          </LoginInputContainer>
+        </LoginFormContainer>
+      </LoginFormRoot>
     );
   }
 }

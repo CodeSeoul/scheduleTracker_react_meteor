@@ -67,7 +67,7 @@ class ScheduleBoard extends React.Component {
 
     const members = employees.map(employee => {
       if (
-        employee.info.firstName.includes(this.state.searchKey) &&
+        employee.info.firstName.includes(this.state.searchKey) ||
         employee.info.lastName.includes(this.state.searchKey)
       ) {
         return (

@@ -1,5 +1,11 @@
 import React, { Fragment } from 'react';
-import { FixedColumn, Select, Option, Delete } from '../../styles/MemberStyle';
+import {
+  FixedColumn,
+  Select,
+  Option,
+  Delete,
+  DeleteIcon
+} from '../../styles/MemberStyle';
 import { Meteor } from 'meteor/meteor';
 import { ScheduleContext } from '../../App';
 import IsAdmin from '../helpers/IsAdmin';
@@ -53,7 +59,7 @@ class Member extends React.Component {
               {weeklySchedule}
               <IsAdmin>
                 <Delete onClick={e => this.deleteHandler(e, _id)}>
-                  Button
+                  <DeleteIcon src="/deleteIcon.png" />
                 </Delete>
               </IsAdmin>
             </Fragment>

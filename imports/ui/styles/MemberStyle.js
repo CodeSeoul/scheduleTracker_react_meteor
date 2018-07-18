@@ -13,6 +13,10 @@ const FixedColumn = styled.div`
 const Select = styled.select`
   width: 100%;
   height: 100%;
+  min-width : 120px !important;
+  appearance : none;
+  text-align-last : center !important;
+  padding : 10px;
 
   ${props => {
     let type = parseInt(props.type);
@@ -32,8 +36,23 @@ const Select = styled.select`
   }};
 `;
 
-const Option = styled.option``;
+const Option = styled.option`
+font-family : 'Roboto';
+background-color : #fff;
+`;
 
-const Delete = styled.button``;
+const Delete = styled.button`
+border :none;
+background : none;
+`;
 
-export { Select, Option, FixedColumn, Delete };
+const DeleteIcon = styled.img`
+width : 1.5rem;
+filter : invert(70%);
+ :hover{
+   transform : scale(1.1,1.1);
+   filter : invert(0);
+ }
+`
+
+export { Select, Option, FixedColumn, Delete, DeleteIcon };
