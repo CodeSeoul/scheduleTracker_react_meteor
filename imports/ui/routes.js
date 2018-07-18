@@ -24,7 +24,7 @@ Meteor.startup(() => {
   render(
     <Router>
       <Switch>
-        <AuthRoute exact path="/" component={App} />
+        <Route exact path="/" component={App} />
         <Route path="/login" component={LoginPage} />
         <AuthRoute path="/admin" component={Admin} />
       </Switch>
