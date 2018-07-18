@@ -30,8 +30,8 @@ class App extends Component {
     week: weekOfTheYear()
   };
   static getDerivedStateFromProps(nextProps, state) {
-    console.log('nextProps', nextProps);
-    return { ...state, employees: nextProps.users };
+    //console.log('nextProps', nextProps);
+    return { ...state, ...nextProps };
   }
 
   handleWeekChange = selected_week => {
@@ -74,6 +74,6 @@ export default (AppContainer = withTracker(() => {
   console.log('loading', loading);
   return {
     loading,
-    users: Meteor.users.find({}).fetch()
+    employees: Meteor.users.find({}).fetch()
   };
 })(App));
