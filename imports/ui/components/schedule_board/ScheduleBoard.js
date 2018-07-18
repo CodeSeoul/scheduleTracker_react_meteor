@@ -61,7 +61,7 @@ class ScheduleBoard extends React.Component {
 
     const members = employees.map(employee => {
 
-        if(employee.info.firstName.includes(this.state.searchKey)&&employee.info.lastName.includes(this.state.searchKey)){
+        if(employee.info.firstName.includes(this.state.searchKey)||employee.info.lastName.includes(this.state.searchKey)){
           return(
           <Member
           Section={section}
@@ -99,7 +99,7 @@ class ScheduleBoard extends React.Component {
           Rank
         </Tablehead>
         {tableheads}
-        <div>Delete</div>
+        <Tablehead>Delete</Tablehead>
         {members}
       </ScheduleContainer>
       </React.Fragment>
