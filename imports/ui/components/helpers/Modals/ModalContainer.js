@@ -7,10 +7,9 @@ import {
 } from '../../../styles/ModalStyle';
 
 const ModalContainer = ({ showModal, toggleModalHandler, modal, handleWeekChange }) => {
-  const toggleDisplay = showModal ? true : false;
 
   return (
-    <ModalWrapper toggle={toggleDisplay}>
+    <ModalWrapper toggle={showModal}>
       <CloseButton onClick={toggleModalHandler}>X</CloseButton>
       <ModalMain>
         <Modal modal={modal} 

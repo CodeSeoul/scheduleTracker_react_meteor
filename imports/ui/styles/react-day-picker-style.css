@@ -2,6 +2,7 @@
 
 .DayPicker {
   display: inline-block;
+  font-family: 'Tahoma';
 }
 
 .DayPicker-wrapper {
@@ -149,7 +150,7 @@
 /* Default modifiers */
 
 .DayPicker-Day--today {
-  color: #d0021b;
+  color: #fca311;
   font-weight: 700;
 }
 
