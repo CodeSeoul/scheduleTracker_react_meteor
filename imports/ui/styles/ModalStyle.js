@@ -3,9 +3,9 @@ import styled from 'styled-components';
 const ModalMain = styled.section`
     position:fixed;
     background: white;
-    width: 50%;
+    width: auto;
     height: auto;
-    padding: 100px;
+    padding: 20px;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);  
@@ -13,6 +13,7 @@ const ModalMain = styled.section`
     -moz-transition: opacity 400ms ease-in;
     transition: opacity 400ms ease-in;
     z-index: 3 !important;
+    text-align: center;
 `;
 
 const ModalWrapper = styled.div`
