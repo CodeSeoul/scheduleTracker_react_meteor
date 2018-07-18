@@ -23,13 +23,21 @@ class Member extends React.Component {
     if (confirm('Are you sure you want to delete this employee?')) {
       Meteor.call('deleteEmployee', id);
     }
-  };
+  }
+
+  tryGetUserRole = () =>{
+    try {
+      return Meteor.user().roles;
+    } catch (error) {
+      return null;
+    }
+  }
+
   render() {
     const { info, _id, Rank, Section, status, week } = this.props;
     const { schedule, firstName, lastName, section, rank } = info;
-    //console.log('schedule', schedule);
+
     const weeklySchedule = schedule[week - 1].map((dailySchedule, index) => {
-      //console.log('week', week);
       return (
         <SelectContainer>
           <Select
@@ -40,15 +48,18 @@ class Member extends React.Component {
             onChange={e => this.scheduleChangeHandler(e, info, _id, index, week)}
           >
             {status.map((stat, idx) => {
+
+            if(this.tryGetUserRole() === 'admin' || stat === status[dailySchedule]){
               return (
                 <Option key={_id + idx} value={idx}>
                   {stat}
                 </Option>
-              );
+              );}
             })}
           </Select>
         </SelectContainer>
       );
+
     });
 
     return (
