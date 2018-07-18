@@ -26,6 +26,15 @@ class Navbar extends React.Component {
     showItem: false,
     week: this.props.week
   };
+
+  //To change the week on navbar when user selects week in calendar
+  static getDerivedStateFromProps(nextProps, state) {
+    if (nextProps.week != state.week){
+      state.week = nextProps.week;
+    }
+    return null;
+  }
+
   handleHover = () => {
     this.setState({ showItem: true });
   };
@@ -41,6 +50,7 @@ class Navbar extends React.Component {
     this.props.history.push('/login');
     Meteor.logout();
   };
+
   render() {
     //console.log('this.props, navBar', this.props);
     return (
