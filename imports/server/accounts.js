@@ -58,6 +58,9 @@ if (Meteor.isServer) {
           }
         );
       }
+    },
+    deleteEmployee(id) {
+      Meteor.users.remove(id);
     }
   });
 }

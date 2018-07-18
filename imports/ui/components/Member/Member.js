@@ -3,6 +3,7 @@ import { FixedColumn, Select, Option, Delete } from '../../styles/MemberStyle';
 import { Meteor } from 'meteor/meteor';
 import { ScheduleContext } from '../../App';
 import IsAdmin from '../helpers/IsAdmin';
+import { log } from 'util';
 class Member extends React.Component {
   scheduleChangeHandler = (e, member, member_id, day, week) => {
     let weekIndex = week - 1;
@@ -12,7 +13,9 @@ class Member extends React.Component {
 
   deleteHandler = (e, id) => {
     // delete user on the server
-    console.log(id);
+    if (confirm('Are you sure you want to delete this employee?')) {
+      Meteor.call('deleteEmployee', id);
+    }
   };
   render() {
     const { info, _id, Rank, Section, status, week } = this.props;
