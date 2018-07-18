@@ -2,8 +2,11 @@ import styled from 'styled-components';
 
 const ScheduleContainer = styled.div`
   display: grid;
-  grid-template-columns: ${({ admin }) =>
-    admin ? 'repeat(11, 1fr)' : 'repeat(10, 1fr)'};
+  grid-template-columns: ${({ admin }) => {
+    console.log('admin', admin);
+
+    return admin ? 'repeat(11, 1fr)' : 'repeat(10, 1fr)';
+  }};
   justify-items: center;
   align-items: center;
   background-color: #eee;

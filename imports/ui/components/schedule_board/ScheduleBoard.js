@@ -99,7 +99,7 @@ class ScheduleBoard extends React.Component {
           />
           <SearchIcon src={'/searchIcon.png'} />
         </SearchContainer>
-        <ScheduleContainer admin={Roles.userIsInRole(Meteor.userId())}>
+        <ScheduleContainer admin={Roles.userIsInRole(Meteor.userId(), 'admin')}>
           <Tablehead onClick={this.handleSort} className="section">
             Section
           </Tablehead>
