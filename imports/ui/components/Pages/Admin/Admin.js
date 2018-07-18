@@ -11,8 +11,8 @@ class Admin extends React.Component {
     lastName: '',
     password: '',
     confirmPassword: '',
-    rank: '',
-    section: ''
+    rank: 'Manager',
+    section: 'iOS'
   };
   checkInputs = () => {
     let errors = [];
@@ -48,12 +48,18 @@ class Admin extends React.Component {
     if (!this.checkInputs()) {
       return false;
     }
+    let { rank, section } = this.props;
+    rank = rank.indexOf(this.state.rank);
+    section = section.indexOf(this.state.section);
+    //console.log('rank, section', rank, section);
     Accounts.createUser(
       {
         username: this.state.username,
         password: this.state.password,
         lastName: this.state.lastName,
-        firstName: this.state.firstName
+        firstName: this.state.firstName,
+        rank,
+        section
       },
       error => {
         if (!error) {
@@ -78,12 +84,15 @@ class Admin extends React.Component {
   onChangeHandler = e => {
     let name = e.target.name;
     let value = e.target.value;
+
+    //console.log('name, value', name, value);
     this.setState(() => ({
       [name]: value
     }));
   };
   render() {
-    console.log('this.props', this.props);
+    //console.log('this.props', this.props);
+    //console.log('this.state', this.state);
     const { section, rank } = this.props;
     return (
       <div>
@@ -130,8 +139,18 @@ class Admin extends React.Component {
               value={this.state.confirmPassword}
               onChange={this.onChangeHandler}
             />
-            <SelectCreator onChange={this.onChangeHandler} items={section} />
-            <SelectCreator onChange={this.onChangeHandler} items={rank} />
+            <SelectCreator
+              name="section"
+              value={this.state.section}
+              onChangeHandler={this.onChangeHandler}
+              items={section}
+            />
+            <SelectCreator
+              name="rank"
+              value={this.state.rank}
+              onChangeHandler={this.onChangeHandler}
+              items={rank}
+            />
             <button type="submit">Add new Employee</button>
           </form>
         </main>

@@ -1,14 +1,18 @@
 import React from 'react';
 
-function SelectCreator(props) {
-  let options = props.items.map((item, i) => {
+function SelectCreator({ items, value, name, onChangeHandler }) {
+  let options = items.map((item, i) => {
     return (
       <option key={i} value={item}>
-        {item}
+        {items[i]}
       </option>
     );
   });
-  return <select>{options}</select>;
+  return (
+    <select name={name} value={value} onChange={onChangeHandler}>
+      {options}
+    </select>
+  );
 }
 
 export default SelectCreator;
