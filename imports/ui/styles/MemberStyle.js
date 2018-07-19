@@ -42,8 +42,13 @@ background-color : #fff;
 `;
 
 const Delete = styled.button`
-border :none;
-background : none;
+ background : none;
+ width : 100%;
+ height : 100%;
+ border: 0.05rem #ccc solid;
+ padding : 0;
+ margin : 0;
+ box-sizing : content-box;
 `;
 
 const DeleteIcon = styled.img`

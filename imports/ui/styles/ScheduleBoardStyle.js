@@ -43,6 +43,12 @@ const SearchContainer = styled.div`
 `;
 
 const Tablehead = styled.div`
-  font-weight: 700;
+  font-weight : 600;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  text-align: center;
+  align-items: center;
+border: 0.05rem #ccc solid;
 `;
 export { ScheduleContainer, Tablehead, Search, SearchIcon, SearchContainer };
