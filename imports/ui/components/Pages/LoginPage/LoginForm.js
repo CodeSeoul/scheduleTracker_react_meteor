@@ -1,6 +1,12 @@
 import React from 'react';
-import { LoginFormRoot, LoginFormContainer, LoginInputContainer, LoginInput, LoginSubmitButton } from '../../../styles/LoginFormStyle';
-
+import {
+  LoginFormRoot,
+  LoginFormContainer,
+  LoginInputContainer,
+  LoginInput,
+  LoginSubmitButton
+} from '../../../styles/LoginFormStyle';
+import { Redirect } from 'react-router';
 class LoginForm extends React.Component {
   state = {
     errors: [],
@@ -45,15 +51,15 @@ class LoginForm extends React.Component {
 
   render() {
     //console.log('this.props', this.props);
+    const redirectUser = Meteor.userId() ? <Redirect to="/" /> : null;
     let showErrors = this.state.hasError
       ? this.errorHandler(this.state.errors)
       : null;
     return (
       <LoginFormRoot>
+        {redirectUser}
         <LoginFormContainer>
-          <LoginInputContainer>
-            {showErrors}
-          </LoginInputContainer>
+          <LoginInputContainer>{showErrors}</LoginInputContainer>
           <LoginInputContainer>
             <LoginInput
               type="text"
