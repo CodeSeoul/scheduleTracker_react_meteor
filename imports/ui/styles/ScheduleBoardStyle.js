@@ -54,4 +54,17 @@ const Tablehead = styled.div`
   background-color : rgba(252,163,17, 1);
 `;
 
-export { ScheduleContainer, Tablehead, Search, SearchIcon, SearchContainer };
+const IsAdmin = styled.div`
+  font-weight : 600;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  font-family: 'Ubuntu';
+  font-size : 1.2rem;
+  font-weight : 700;
+  text-align: center;
+  align-items: center;
+  border: 0.05rem #ccc solid;
+  background-color : rgba(252,163,17, 1);
+`
+export { ScheduleContainer, Tablehead, Search, SearchIcon, SearchContainer, IsAdmin };
