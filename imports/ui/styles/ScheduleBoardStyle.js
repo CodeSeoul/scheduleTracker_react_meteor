@@ -9,13 +9,11 @@ const ScheduleContainer = styled.div`
   }};
   justify-items: center;
   align-items: center;
-  background-color: #eee;
-  grid-auto-rows: minmax(50px, auto);
+  background-color : rgb(249, 254, 255);
+  grid-auto-rows : minmax(60px, auto);
   margin: 1rem;
   font-family: 'Roboto';
-  > * {
-    font-size: 1rem !important;
-  }
+  font-weight : 400;
 `;
 
 const Search = styled.input`
@@ -37,12 +35,36 @@ const SearchContainer = styled.div`
   justify-content: stretch;
   align-content: stretch;
   align-items: center;
-  height: 2rem;
+  height: 3rem;
   width: 40%;
   margin: 2rem 0 1rem 1rem;
 `;
 
 const Tablehead = styled.div`
-  font-weight: 700;
+  font-weight : 600;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  font-family: 'Ubuntu';
+  font-size : 1.2rem;
+  font-weight : 700;
+  text-align: center;
+  align-items: center;
+  border: 0.05rem #ccc solid;
+  background-color : rgba(252,163,17, 1);
 `;
-export { ScheduleContainer, Tablehead, Search, SearchIcon, SearchContainer };
+
+const IsAdmin = styled.div`
+  font-weight : 600;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  font-family: 'Ubuntu';
+  font-size : 1.2rem;
+  font-weight : 700;
+  text-align: center;
+  align-items: center;
+  border: 0.05rem #ccc solid;
+  background-color : rgba(252,163,17, 1);
+`
+export { ScheduleContainer, Tablehead, Search, SearchIcon, SearchContainer, IsAdmin };

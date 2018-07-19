@@ -110,8 +110,8 @@ class ScheduleBoard extends React.Component {
             Rank
           </Tablehead>
           {tableheads}
-          <IsAdmin>
-            <div>Delete</div>
+          <IsAdmin style={{backgroundColor : 'red'}}>
+            <Tablehead>Delete</Tablehead>
           </IsAdmin>
           {members}
         </ScheduleContainer>
