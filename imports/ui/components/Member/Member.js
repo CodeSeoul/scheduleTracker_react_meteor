@@ -25,11 +25,15 @@ class Member extends React.Component {
     }
   }
 
-  tryGetUserRole = () =>{
+  getEditAccess = () =>{
     try {
-      return Meteor.user().roles;
+      const user = Meteor.user();
+      if(user.roles === 'admin'){
+        return true;
+      }
     } catch (error) {
-      return null;
+      // this is guest
+      return false;
     }
   }
 
@@ -47,9 +51,8 @@ class Member extends React.Component {
             value={dailySchedule}
             onChange={e => this.scheduleChangeHandler(e, info, _id, index, week)}
           >
-            {status.map((stat, idx) => {
-
-            if(this.tryGetUserRole() === 'admin' || stat === status[dailySchedule]){
+          {status.map((stat, idx) => {
+            if(this.getEditAccess() || Meteor.userId() == _id || stat === status[dailySchedule]){
               return (
                 <Option key={_id + idx} value={idx}>
                   {stat}
@@ -62,26 +65,30 @@ class Member extends React.Component {
 
     });
 
-
-    const SectionContainer = () => {
-      return <div>{Section[section]}</div>
+    const SectionContainer = ({editable}) => {
+      if(editable) return <div>{Section[section]}</div>
+      else return <div>{Section[section]}</div>
     }
 
-    const NameContainer = () => {
-      return <div>{`${firstName} ${lastName}`}</div>
+    const NameContainer = ({editable}) => {
+      if(editable) return <div>{`${firstName} ${lastName}`}</div>
+      else return <div>{`${firstName} ${lastName}`}</div>
     }
 
-    const RankContainer = () => {
-      return <div>{Rank[rank]}</div>
+    const RankContainer = ({editable}) => {
+      if(editable) return <div>{Rank[rank]}</div>
+      else return <div>{Rank[rank]}</div>
     }
+
+    const editable = this.getEditAccess();
     return (
       <ScheduleContext.Consumer>
         {context => {
           return (
             <Fragment>
-              <FixedColumn><SectionContainer/></FixedColumn>
-              <FixedColumn><NameContainer/></FixedColumn>
-              <FixedColumn><RankContainer/></FixedColumn>
+              <FixedColumn><SectionContainer editable={editable}/></FixedColumn>
+              <FixedColumn><NameContainer editable={editable}/></FixedColumn>
+              <FixedColumn><RankContainer editable={editable}/></FixedColumn>
               {weeklySchedule}
               <IsAdmin>
                 <Delete onClick={e => this.deleteHandler(e, _id)}>
