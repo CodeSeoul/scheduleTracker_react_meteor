@@ -59,7 +59,13 @@ class Navbar extends React.Component {
             </a>
           </NavMenuItem>
 
-          <NavMenuItem onClick={this.handleLogout}>Log Out</NavMenuItem>
+          {Meteor.userId() ? (
+            <NavMenuItem onClick={this.handleLogout}>Log Out</NavMenuItem>
+          ) : (
+            <NavMenuItem>
+              <Link to="/login">Login</Link>
+            </NavMenuItem>
+          )}
 
           <IsAdmin>
             <NavMenuItem>
