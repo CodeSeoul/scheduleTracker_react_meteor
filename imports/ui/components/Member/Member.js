@@ -90,7 +90,13 @@ class Member extends React.Component {
     }
 
     const RankContainer = ({editable}) => {
-      if(editable) return <div>{Rank[rank]}</div>
+      if(editable) return (
+        <select value={rank} onChange={e => this.memberInfoUpdateHandler(_id, {rank: e.target.selectedIndex})}>
+          {Rank.map((rankName, idx)=>{
+            return <option key={idx} value={idx}>{rankName}</option>
+          })}
+        </select>
+      )
       else return <div>{Rank[rank]}</div>
     }
 
