@@ -53,4 +53,5 @@ const Tablehead = styled.div`
   border: 0.05rem #ccc solid;
   background-color : rgba(252,163,17, 1);
 `;
+
 export { ScheduleContainer, Tablehead, Search, SearchIcon, SearchContainer };

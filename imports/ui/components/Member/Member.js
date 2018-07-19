@@ -24,10 +24,48 @@ class Member extends React.Component {
       Meteor.call('deleteEmployee', id);
     }
   };
+
+  sectionRankHandler = (e, info, _id)=>{
+  }
+
   render() {
     const { info, _id, Rank, Section, status, week } = this.props;
     const { schedule, firstName, lastName, section, rank } = info;
     //console.log('schedule', schedule);
+    const sectionSelect =
+   <SelectContainer>
+     <Select
+     key={_id}
+     value={section}
+     onChange={e=>this.sectionRankHandler(e, info, _id)}
+     >
+     {Section.map((section,idx)=>{
+       return(
+         <Option key={_id + idx} value={Section[idx]}>
+            {section}
+          </Option>
+              )
+      })}
+      </Select>
+    </SelectContainer>
+
+    const rankSelect =
+    <SelectContainer>
+      <Select
+      key={_id}
+      value={rank}
+      onChange={e=>this.sectionNameRankHandler(e, info, _id)}
+      >
+      {Rank.map((rank,idx)=>{
+        return(
+          <Option key={_id + idx} value={Rank[idx]}>
+            {rank}
+          </Option>
+              )
+      })}
+      </Select>
+    </SelectContainer>
+
     const weeklySchedule = schedule[week - 1].map((dailySchedule, index) => {
       //console.log('week', week);
       return (
@@ -56,9 +94,9 @@ class Member extends React.Component {
         {context => {
           return (
             <Fragment>
-              <FixedColumn>{Section[section]}</FixedColumn>
+              {sectionSelect}
               <FixedColumn>{`${firstName} ${lastName}`}</FixedColumn>
-              <FixedColumn>{Rank[rank]}</FixedColumn>
+              {rankSelect}
               {weeklySchedule}
               <IsAdmin>
                 <Delete onClick={e => this.deleteHandler(e, _id)}>
