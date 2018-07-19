@@ -33,13 +33,15 @@ class Member extends React.Component {
     try {
       const user = Meteor.user();
       if(user.roles === 'admin'){
+        // this is admin
         return true;
       }
+      // this is user
     } catch (error) {
       // this is guest
+    } 
       return false;
     }
-  }
 
   render() {
     const { info, _id, Rank, Section, status, week } = this.props;
