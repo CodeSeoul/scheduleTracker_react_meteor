@@ -61,6 +61,22 @@ if (Meteor.isServer) {
     },
     deleteEmployee(id) {
       Meteor.users.remove(id);
+    },
+    updateUserInfo(adminId, targetId, newState) {
+      const user = Meteor.users.findOne({ _id: adminId });
+      if(user.roles === 'admin') {
+        Meteor.users.update(
+          { _id: targetId },
+          {
+            $set: {
+              ['info.rank']: newState.rank,
+              ['info.section']: newState.section,
+              ['info.firstName']: newState.firstName,
+              ['info.lastName']: newState.lastName,
+            }
+          }
+        )
+      }
     }
   });
 }
