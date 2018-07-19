@@ -18,6 +18,10 @@ class Member extends React.Component {
     Meteor.call('changeSchedule', member, member_id, newStatus, day, weekIndex);
   };
 
+  memberInfoUpdateHandler = (member_id, newState) => {
+    Meteor.call('updateUserInfo', Meteor.userId(), member_id, newState);
+  }
+  
   deleteHandler = (e, id) => {
     // delete user on the server
     if (confirm('Are you sure you want to delete this employee?')) {
@@ -71,7 +75,7 @@ class Member extends React.Component {
     }
 
     const NameContainer = ({editable}) => {
-      if(editable) return <EditableText defaultValue={`${firstName} ${lastName}`}/>
+      if(editable) return <EditableText memberInfoUpdateHandler={this.memberInfoUpdateHandler} defaultValue={`${firstName} ${lastName}`}/>
       else return <div>{`${firstName} ${lastName}`}</div>
     }
 
@@ -102,6 +106,7 @@ class Member extends React.Component {
           this.setState({onEdit: false, lastValue: value});
           var firstName = value.substring(0, value.lastIndexOf(' ') + 1);
           var lastName = value.substring(value.lastIndexOf(' ') + 1, value.length);
+          this.props.memberInfoUpdateHandler(_id, {firstName, lastName});
         }
       }
 
