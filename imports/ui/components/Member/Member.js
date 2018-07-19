@@ -62,14 +62,26 @@ class Member extends React.Component {
 
     });
 
+
+    const SectionContainer = () => {
+      return <div>{Section[section]}</div>
+    }
+
+    const NameContainer = () => {
+      return <div>{`${firstName} ${lastName}`}</div>
+    }
+
+    const RankContainer = () => {
+      return <div>{Rank[rank]}</div>
+    }
     return (
       <ScheduleContext.Consumer>
         {context => {
           return (
             <Fragment>
-              <FixedColumn>{Section[section]}</FixedColumn>
-              <FixedColumn>{`${firstName} ${lastName}`}</FixedColumn>
-              <FixedColumn>{Rank[rank]}</FixedColumn>
+              <FixedColumn><SectionContainer/></FixedColumn>
+              <FixedColumn><NameContainer/></FixedColumn>
+              <FixedColumn><RankContainer/></FixedColumn>
               {weeklySchedule}
               <IsAdmin>
                 <Delete onClick={e => this.deleteHandler(e, _id)}>
