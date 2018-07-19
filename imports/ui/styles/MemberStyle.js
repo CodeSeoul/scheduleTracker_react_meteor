@@ -7,38 +7,53 @@ const FixedColumn = styled.div`
   justify-items: center;
   text-align: center;
   align-items: center;
+  font-size : 1.1rem;
   border: 0.05rem #ccc solid;
 `;
 
-const Select = styled.select`
-  width: 100%;
-  height: 100%;
-  min-width : 120px !important;
+ const SelectContainer = styled.div`
+   width: 100%;
+   height: 100%;
+   min-width : 120px !important;
+   border: 0.05rem #ccc solid;
+   display : grid;
+   grid-auto-columns : minmax(1fr, 60%);
+   text-align: center;
+   align-items: center;
+   justify-content : center;
+ `;
+ 
+
+ const Select = styled.select`
   appearance : none;
   text-align-last : center !important;
-  padding : 10px;
+  border : none;
+  background-color : rgb(249, 254, 255);
+  padding : 3px 0;
+  font-size : 1.1rem;
+  font-family : 'Roboto';
 
   ${props => {
     let type = parseInt(props.type);
     //console.log('style props', props);
     switch (type) {
       case 0:
-        return 'background:rgba(195,36,186,0.7);';
+        return 'box-shadow: 0 8px 0 rgba(195,36,186,0.7);';
       case 1:
-        return 'background:rgba(210,13,13,0.7);';
+        return 'box-shadow: 0 8px 0 rgba(210,13,13,0.7);';
       case 2:
-        return 'background:rgba(35,183,255,0.7);';
+        return 'box-shadow: 0 8px 0 rgba(35,183,255,0.7);';
       case 3:
-        return 'background:rgba(21,110,23,0.7);';
+        return 'box-shadow: 0 8px 0 rgba(21,110,23,0.7);';
       case 4:
-        return 'background:rgba(255,163,13,0.7);';
+        return 'box-shadow: 0 8px 0 rgba(255,163,13,0.7);';
     }
   }};
 `;
 
 const Option = styled.option`
 font-family : 'Roboto';
-background-color : #fff;
+background-color : #eee;
 `;
 
 const Delete = styled.button`
@@ -60,4 +75,4 @@ filter : invert(70%);
  }
 `
 
-export { Select, Option, FixedColumn, Delete, DeleteIcon };
+export { Select, Option, FixedColumn, Delete, DeleteIcon, SelectContainer };

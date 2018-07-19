@@ -4,7 +4,8 @@ import {
   Select,
   Option,
   Delete,
-  DeleteIcon
+  DeleteIcon,
+  SelectContainer
 } from '../../styles/MemberStyle';
 import { Meteor } from 'meteor/meteor';
 import { ScheduleContext } from '../../App';
@@ -30,21 +31,23 @@ class Member extends React.Component {
     const weeklySchedule = schedule[week - 1].map((dailySchedule, index) => {
       //console.log('week', week);
       return (
-        <Select
-          name="status"
-          type={dailySchedule}
-          key={_id + index}
-          value={dailySchedule}
-          onChange={e => this.scheduleChangeHandler(e, info, _id, index, week)}
-        >
-          {status.map((stat, idx) => {
-            return (
-              <Option key={_id + idx} value={idx}>
-                {stat}
-              </Option>
-            );
-          })}
-        </Select>
+        <SelectContainer>
+          <Select
+            name="status"
+            type={dailySchedule}
+            key={_id + index}
+            value={dailySchedule}
+            onChange={e => this.scheduleChangeHandler(e, info, _id, index, week)}
+          >
+            {status.map((stat, idx) => {
+              return (
+                <Option key={_id + idx} value={idx}>
+                  {stat}
+                </Option>
+              );
+            })}
+          </Select>
+        </SelectContainer>
       );
     });
 
