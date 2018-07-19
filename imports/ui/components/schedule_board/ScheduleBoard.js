@@ -111,7 +111,7 @@ class ScheduleBoard extends React.Component {
           </Tablehead>
           {tableheads}
           <IsAdmin>
-            <div>Delete</div>
+            <Tablehead>Delete</Tablehead>
           </IsAdmin>
           {members}
         </ScheduleContainer>

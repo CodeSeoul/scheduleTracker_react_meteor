@@ -75,11 +75,11 @@ class Member extends React.Component {
 
     const SectionContainer = ({editable}) => {
       if(editable) return (
-        <select value={section} onChange={e => this.memberInfoUpdateHandler(_id, {section: e.target.selectedIndex})}>
+        <Select value={section} onChange={e => this.memberInfoUpdateHandler(_id, {section: e.target.selectedIndex})}>
           {Section.map((sectionName, idx)=>{
-            return <option key={idx} value={idx}>{sectionName}</option>
+            return <Option key={idx} value={idx}>{sectionName}</Option>
           })}
-        </select>
+        </Select>
       )
       else return <div>{Section[section]}</div>
     }
@@ -93,11 +93,11 @@ class Member extends React.Component {
 
     const RankContainer = ({editable}) => {
       if(editable) return (
-        <select value={rank} onChange={e => this.memberInfoUpdateHandler(_id, {rank: e.target.selectedIndex})}>
+        <Select value={rank} onChange={e => this.memberInfoUpdateHandler(_id, {rank: e.target.selectedIndex})}>
           {Rank.map((rankName, idx)=>{
-            return <option key={idx} value={idx}>{rankName}</option>
+            return <Option key={idx} value={idx}>{rankName}</Option>
           })}
-        </select>
+        </Select>
       )
       else return <div>{Rank[rank]}</div>
     }
