@@ -40,8 +40,8 @@ class Member extends React.Component {
     } catch (error) {
       // this is guest
     } 
-      return false;
-    }
+    return false;
+  }
 
   render() {
     const { info, _id, Rank, Section, status, week } = this.props;
@@ -72,12 +72,20 @@ class Member extends React.Component {
     });
 
     const SectionContainer = ({editable}) => {
-      if(editable) return <div>{Section[section]}</div>
+      if(editable) return (
+        <select value={section} onChange={e => this.memberInfoUpdateHandler(_id, {section: e.target.selectedIndex})}>
+          {Section.map((sectionName, idx)=>{
+            return <option key={idx} value={idx}>{sectionName}</option>
+          })}
+        </select>
+      )
       else return <div>{Section[section]}</div>
     }
 
     const NameContainer = ({editable}) => {
-      if(editable) return <EditableText memberInfoUpdateHandler={this.memberInfoUpdateHandler} defaultValue={`${firstName} ${lastName}`}/>
+      if(editable) return <EditableText 
+        memberInfoUpdateHandler={this.memberInfoUpdateHandler} 
+        defaultValue={`${firstName} ${lastName}`}/>
       else return <div>{`${firstName} ${lastName}`}</div>
     }
 
