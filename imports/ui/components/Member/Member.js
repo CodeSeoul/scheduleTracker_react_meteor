@@ -11,6 +11,8 @@ import { Meteor } from 'meteor/meteor';
 import { ScheduleContext } from '../../App';
 import IsAdmin from '../helpers/IsAdmin';
 import { log } from 'util';
+import MemberNameInput from './MemberNameInput';
+
 class Member extends React.Component {
   scheduleChangeHandler = (e, member, member_id, day, week) => {
     let weekIndex = week - 1;
@@ -18,56 +20,36 @@ class Member extends React.Component {
     Meteor.call('changeSchedule', member, member_id, newStatus, day, weekIndex);
   };
 
+  memberInfoUpdateHandler = (member_id, newState) => {
+    Meteor.call('updateUserInfo', Meteor.userId(), member_id, newState);
+  }
+  
   deleteHandler = (e, id) => {
     // delete user on the server
     if (confirm('Are you sure you want to delete this employee?')) {
       Meteor.call('deleteEmployee', id);
     }
-  };
+  }
 
-  sectionRankHandler = (e, info, _id)=>{
+  getEditAccess = () =>{
+    try {
+      const user = Meteor.user();
+      if(user.roles === 'admin'){
+        // this is admin
+        return true;
+      }
+      // this is user
+    } catch (error) {
+      // this is guest
+    } 
+    return false;
   }
 
   render() {
     const { info, _id, Rank, Section, status, week } = this.props;
     const { schedule, firstName, lastName, section, rank } = info;
-    //console.log('schedule', schedule);
-    const sectionSelect =
-   <SelectContainer>
-     <Select
-     key={_id}
-     value={section}
-     onChange={e=>this.sectionRankHandler(e, info, _id)}
-     >
-     {Section.map((section,idx)=>{
-       return(
-         <Option key={_id + idx} value={Section[idx]}>
-            {section}
-          </Option>
-              )
-      })}
-      </Select>
-    </SelectContainer>
-
-    const rankSelect =
-    <SelectContainer>
-      <Select
-      key={_id}
-      value={rank}
-      onChange={e=>this.sectionNameRankHandler(e, info, _id)}
-      >
-      {Rank.map((rank,idx)=>{
-        return(
-          <Option key={_id + idx} value={Rank[idx]}>
-            {rank}
-          </Option>
-              )
-      })}
-      </Select>
-    </SelectContainer>
 
     const weeklySchedule = schedule[week - 1].map((dailySchedule, index) => {
-      //console.log('week', week);
       return (
         <SelectContainer>
           <Select
@@ -77,26 +59,58 @@ class Member extends React.Component {
             value={dailySchedule}
             onChange={e => this.scheduleChangeHandler(e, info, _id, index, week)}
           >
-            {status.map((stat, idx) => {
+          {status.map((stat, idx) => {
+            if(this.getEditAccess() || Meteor.userId() == _id || stat === status[dailySchedule]){
               return (
                 <Option key={_id + idx} value={idx}>
                   {stat}
                 </Option>
-              );
+              );}
             })}
           </Select>
         </SelectContainer>
       );
+
     });
 
+    const SectionContainer = ({editable}) => {
+      if(editable) return (
+        <Select value={section} onChange={e => this.memberInfoUpdateHandler(_id, {section: e.target.selectedIndex})}>
+          {Section.map((sectionName, idx)=>{
+            return <Option key={idx} value={idx}>{sectionName}</Option>
+          })}
+        </Select>
+      )
+      else return <div>{Section[section]}</div>
+    }
+
+    const NameContainer = ({editable}) => {
+      if(editable) return <MemberNameInput 
+        memberInfoUpdateHandler={this.memberInfoUpdateHandler} 
+        defaultValue={`${firstName} ${lastName}`}/>
+      else return <div>{`${firstName} ${lastName}`}</div>
+    }
+
+    const RankContainer = ({editable}) => {
+      if(editable) return (
+        <Select value={rank} onChange={e => this.memberInfoUpdateHandler(_id, {rank: e.target.selectedIndex})}>
+          {Rank.map((rankName, idx)=>{
+            return <Option key={idx} value={idx}>{rankName}</Option>
+          })}
+        </Select>
+      )
+      else return <div>{Rank[rank]}</div>
+    }
+
+    const editable = this.getEditAccess();
     return (
       <ScheduleContext.Consumer>
         {context => {
           return (
             <Fragment>
-              {sectionSelect}
-              <FixedColumn>{`${firstName} ${lastName}`}</FixedColumn>
-              {rankSelect}
+              <FixedColumn><SectionContainer editable={editable}/></FixedColumn>
+              <FixedColumn><NameContainer editable={editable}/></FixedColumn>
+              <FixedColumn><RankContainer editable={editable}/></FixedColumn>
               {weeklySchedule}
               <IsAdmin>
                 <Delete onClick={e => this.deleteHandler(e, _id)}>
