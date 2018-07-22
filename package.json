@@ -12,6 +12,7 @@
     "material-design-icons": "^3.0.1",
     "meteor-node-stubs": "^0.3.2",
     "react": "^16.4.1",
+    "react-day-picker": "^7.1.10",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
     "simpl-schema": "^1.5.0",
