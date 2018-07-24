@@ -2,9 +2,8 @@ import React from 'react';
 import DayPicker from 'react-day-picker';
 import '../../../styles/react-day-picker-style.css';
 
-const WeekModal = (props) => {
+const WeekModal = ({handleWeekChange}) => {
 
-  const { handleWeekChange } = props;
   return <DayPicker 
           showWeekNumbers
           fixedWeeks

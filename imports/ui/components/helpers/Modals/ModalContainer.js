@@ -6,7 +6,7 @@ import {
   CloseButton
 } from '../../../styles/ModalStyle';
 
-const ModalContainer = ({ showModal, toggleModalHandler, modal, handleWeekChange }) => {
+const ModalContainer = ({showModal, toggleModalHandler, modal, handleWeekChange, employees,week,status }) => {
 
   return (
     <ModalWrapper toggle={showModal}>
@@ -14,6 +14,8 @@ const ModalContainer = ({ showModal, toggleModalHandler, modal, handleWeekChange
       <ModalMain>
         <Modal modal={modal} 
                handleWeekChange={handleWeekChange}
+               employees={employees}
+               week={week}
         />
       </ModalMain>
     </ModalWrapper>
