@@ -13,7 +13,8 @@ const Modal = props => {
                  handleWeekChange={handleWeekChange}/>;
       case 'dashboard':
         return <DashboardModal
-                  employees = {employees} />;
+                  employees = {employees}
+                  week = {week} />;
       default:
         return null;
     }
