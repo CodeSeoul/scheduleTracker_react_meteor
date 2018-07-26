@@ -3,7 +3,7 @@ import DashboardModal from './DashboardModal';
 import WeekModal from './WeekModal';
 
 const Modal = props => {
-  const { modal, handleWeekChange } = props;
+  const { modal, handleWeekChange, employees } = props;
   console.log('modal to render:', modal);
 
   let displayModal = () => {
@@ -12,7 +12,9 @@ const Modal = props => {
         return <WeekModal 
                  handleWeekChange={handleWeekChange}/>;
       case 'dashboard':
-        return <DashboardModal />;
+        return <DashboardModal
+                  employees = {employees}
+                  week = {week} />;
       default:
         return null;
     }

@@ -25,6 +25,8 @@ class Dashboard extends React.Component {
           toggleModalHandler={this.toggleModalHandler}
           modal={this.state.modal}
           handleWeekChange={this.props.handleWeekChange}
+          employees = {this.props.employees}
+          week={this.props.week}
         />
 
         <Header>Schedule Tracker</Header>

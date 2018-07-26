@@ -30,7 +30,7 @@ class App extends Component {
     week: weekOfTheYear()
   };
   static getDerivedStateFromProps(nextProps, state) {
-    //console.log('nextProps', nextProps);
+    console.log('nextProps', nextProps);
     return { ...state, ...nextProps };
   }
 
@@ -47,7 +47,6 @@ class App extends Component {
       return <p>...Loading</p>;
     }
     //console.log(this.state);
-    //console.log(this.state.week);
     return (
       <ScheduleContextProvider>
         <div>
@@ -56,6 +55,7 @@ class App extends Component {
           </header>
           <div>
             <DashBoard
+              employees = {this.state.employees}
               week={this.state.week}
               handleWeekChange={this.handleWeekChange}
             />
