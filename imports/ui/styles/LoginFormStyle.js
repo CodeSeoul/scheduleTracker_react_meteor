@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const LoginInputContainer = styled.div`
 display: flex;
 justify-content: center;
-margin: 10px;
+margin: 12px;
 `
 
 const LoginInput = styled.input`
@@ -11,24 +11,31 @@ const LoginInput = styled.input`
   border: 1px solid #fca311;
   color: #fca311;
 }
-width: 80%;
+width: 70%;
 height: 60px;
 background-color: transparent;
 border: 1px solid dimgray;
 border-radius: 5px;
 font-size: 20px;
+padding-left: 5px;
+padding-right: 5px;
 `
 
 const LoginSubmitButton = styled.button`
-width:80%;
+width:70%;
+
 background-color: rgba(41, 53, 78, 0.95);
 &:hover{
   background-color: #fca311;
 }
-height: 60px;
+height: 64px;
 border: none;
 border-radius: 5px;
-
+box-sizing: content-box;
+padding-left: 5px;
+padding-right: 5px;
+color:white;
+font-size: 20px;
 `
 
 const LoginFormContainer = styled.form`
