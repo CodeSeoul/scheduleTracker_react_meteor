@@ -19,11 +19,12 @@ border-radius: 5px;
 font-size: 20px;
 padding-left: 5px;
 padding-right: 5px;
+transition: border .2s, color .2s;
 `
 
 const LoginSubmitButton = styled.button`
 width:70%;
-
+transition: background-color, .2s;
 background-color: rgba(41, 53, 78, 0.95);
 &:hover{
   background-color: #fca311;
