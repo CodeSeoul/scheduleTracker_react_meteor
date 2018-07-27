@@ -29,6 +29,7 @@ const LoginPageTitle = styled.div`
   &:hover{
     color: #fca311;
   }
+  transition: color .3s;
 `;
 
 export { LoginPageBackground, LoginPageTitle }
