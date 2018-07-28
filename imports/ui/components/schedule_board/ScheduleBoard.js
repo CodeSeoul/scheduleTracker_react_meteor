@@ -9,9 +9,15 @@ import {
   SearchContainer
 } from '../../styles/ScheduleBoardStyle';
 import IsAdmin from '../helpers/IsAdmin';
+import { Meteor } from 'meteor/meteor';
 
 const sortEmployees = (employees, key, order) => {
   employees.sort((a, b) => {
+    let id = Meteor.userId();
+    if(id){
+      if(id === a._id) return -1;
+      else if(id === b._id) return 1;
+    }
     if (key == 'name'){
       if (!a.info['firstName'] || b.info['firstName']) return 1;
       else return a.info['firstName'].localeCompare(b.info['firstName']) * order;
