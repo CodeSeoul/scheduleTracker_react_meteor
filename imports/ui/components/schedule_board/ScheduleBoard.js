@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Member from '../Member/Member';
 import {
   ScheduleContainer,
+  SortableTableHead,
   Tablehead,
   Search,
   SearchIcon,
@@ -107,15 +108,15 @@ class ScheduleBoard extends React.Component {
           <SearchIcon src={'/searchIcon.png'} />
         </SearchContainer>
         <ScheduleContainer admin={Roles.userIsInRole(Meteor.userId(), 'admin')}>
-          <Tablehead onClick={this.handleSort} className="section">
+          <SortableTableHead onClick={this.handleSort} className="section">
             Section
-          </Tablehead>
-          <Tablehead onClick={this.handleSort} className="name">
+          </SortableTableHead>
+          <SortableTableHead onClick={this.handleSort} className="name">
             Name
-          </Tablehead>
-          <Tablehead onClick={this.handleSort} className="rank">
+          </SortableTableHead>
+          <SortableTableHead onClick={this.handleSort} className="rank">
             Rank
-          </Tablehead>
+          </SortableTableHead>
           {tableheads}
           <IsAdmin style={{backgroundColor : 'red'}}>
             <Tablehead>Delete</Tablehead>
