@@ -12,9 +12,10 @@ import IsAdmin from '../helpers/IsAdmin';
 
 const sortEmployees = (employees, key, order) => {
   employees.sort((a, b) => {
-    if (!a.info['firstName'] || b.info['firstName']) return 1;
-    else if (key == 'name')
-      return a.info['firstName'].localeCompare(b.info['firstName']) * order;
+    if (key == 'name'){
+      if (!a.info['firstName'] || b.info['firstName']) return 1;
+      else return a.info['firstName'].localeCompare(b.info['firstName']) * order;
+    }
     else if (key == 'section')
       return (a.info['section'] - b.info['section']) * order;
     else return (a.info['rank'] - b.info['rank']) * order;
