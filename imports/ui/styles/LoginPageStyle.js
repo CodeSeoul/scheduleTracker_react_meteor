@@ -14,6 +14,9 @@ const LoginPageBackground= styled.div`
 `;
 
 const LoginPageTitle = styled.div`
+  @media (max-height: 390px) {
+    display: none;
+  }
 
   justify-content: center;
   display: flex;

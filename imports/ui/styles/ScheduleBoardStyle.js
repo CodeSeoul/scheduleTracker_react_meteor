@@ -54,6 +54,10 @@ const Tablehead = styled.div`
   background-color : rgba(252,163,17, 1);
 `;
 
+const SortableTableHead = styled(Tablehead)`
+  cursor:pointer;
+`
+
 const IsAdmin = styled.div`
   font-weight : 600;
   width: 100%;
@@ -67,4 +71,4 @@ const IsAdmin = styled.div`
   border: 0.05rem #ccc solid;
   background-color : rgba(252,163,17, 1);
 `
-export { ScheduleContainer, Tablehead, Search, SearchIcon, SearchContainer, IsAdmin };
+export { ScheduleContainer, SortableTableHead, Tablehead, Search, SearchIcon, SearchContainer, IsAdmin };
