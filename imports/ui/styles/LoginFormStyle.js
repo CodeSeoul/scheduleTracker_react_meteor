@@ -43,15 +43,23 @@ const LoginFormContainer = styled.form`
 margin:auto;
 flex:1;
 `
+//420, 387
 
 const LoginFormRoot = styled.div`
-width: 30%;
 margin: auto;
-margin-top: 30px;
-height: 40%;
+width: 100%;
+height: 100%;
+@media (min-height: 390px) {
+  margin-top: 30px;
+  height: 40%;
+}
+@media (min-width:420px) {
+  width: 420px;
+}
 background: white;
 box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 display: flex;
+min-height:260px;
 `
 
 export { LoginFormRoot, LoginFormContainer, LoginInputContainer, LoginInput, LoginSubmitButton };
