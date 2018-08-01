@@ -1,3 +1,20 @@
+Meteor.startup(() => {
+  //creates default admin
+  if (Meteor.users.find().fetch().length < 1) {
+    console.log('admin create');
+
+    let userId = Accounts.createUser({
+      username: 'admin',
+      password: 'admin',
+      firstName: 'admin',
+      lastName: 'admin',
+      rank: 'admin',
+      section: 'admin',
+      role: 'admin'
+    });
+  }
+});
+
 Accounts.onCreateUser((options, user) => {
   //console.log('options', options);
   //console.log('user', user);
@@ -7,7 +24,8 @@ Accounts.onCreateUser((options, user) => {
   //   'Meteor.settings.admins',
   //   Meteor.settings.admins.indexOf(options.username)
   // );
-  if (Meteor.settings.admins.indexOf(options.username) > -1) {
+  console.log(user, 'user');
+  if (user.username === 'admin') {
     user.roles = 'admin';
   }
 
@@ -64,7 +82,7 @@ if (Meteor.isServer) {
     },
     updateUserInfo(adminId, targetId, newState) {
       const user = Meteor.users.findOne({ _id: adminId });
-      if(user.roles === 'admin') {
+      if (user.roles === 'admin') {
         Meteor.users.update(
           { _id: targetId },
           {
@@ -72,10 +90,10 @@ if (Meteor.isServer) {
               ['info.rank']: newState.rank,
               ['info.section']: newState.section,
               ['info.firstName']: newState.firstName,
-              ['info.lastName']: newState.lastName,
+              ['info.lastName']: newState.lastName
             }
           }
-        )
+        );
       }
     }
   });
