@@ -30,7 +30,7 @@ class App extends Component {
     week: weekOfTheYear()
   };
   static getDerivedStateFromProps(nextProps, state) {
-    console.log('nextProps', nextProps);
+    //console.log('nextProps', nextProps);
     return { ...state, ...nextProps };
   }
 
@@ -55,7 +55,7 @@ class App extends Component {
           </header>
           <div>
             <DashBoard
-              employees = {this.state.employees}
+              employees={this.state.employees}
               week={this.state.week}
               handleWeekChange={this.handleWeekChange}
             />
@@ -71,7 +71,7 @@ class App extends Component {
 export default (AppContainer = withTracker(() => {
   const userHandle = Meteor.subscribe('allUsers');
   const loading = !userHandle.ready();
-  console.log('loading', loading);
+  //console.log('loading', loading);
   return {
     loading,
     employees: Meteor.users.find({}).fetch()
